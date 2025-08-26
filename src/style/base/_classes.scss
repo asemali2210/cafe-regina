@@ -1,0 +1,28 @@
+@use './color.scss' as *;
+
+.font-inter{
+    font-family: "Inter", sans-serif;
+}
+
+.font-athina{
+    font-family: 'Athina Regular';
+}
+.font-harmond{
+    font-family: 'Harmond';
+}
+.heading-xl{
+    font-size: 3rem;
+    font-family: 'Athina Regular';
+    color: $white ;
+
+}
+
+.text-gray{
+    color:$gray-2;
+    
+}
+
+.bg-dark-1{
+    background-color: #0E0D0A;
+}
+

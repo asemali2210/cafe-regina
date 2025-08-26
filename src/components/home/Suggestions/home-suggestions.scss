@@ -1,0 +1,35 @@
+.home__suggestions{
+    .suggestions__content{
+        margin-top: 3rem;
+    }
+    .home__suggestions__images{
+        position: relative;
+        
+        .images__left{
+            .imgae_3{
+                margin-left: -80px;
+                margin-top: 100px;
+            }
+            .imgae_1{
+                margin-left: -30px;
+                margin-top: 100px;
+            }
+        }
+        .images__right{
+            display: flex;
+            justify-content: flex-end;
+            .imgae_2{
+                margin-right: -80px;
+                margin-top: 100px;
+                z-index: 2;
+            }
+            .imgae_1{
+                margin-right: -30px;
+                margin-top: 100px;
+                z-index: 1;
+    
+            }
+        }
+    }
+}
+

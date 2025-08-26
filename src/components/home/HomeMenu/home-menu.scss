@@ -1,0 +1,30 @@
+@use '../../../style/base/color.scss' as *;
+
+.home-menu{
+    background-image: url('../../../../public/images/home-menu-bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom left;
+    padding: 100px 0;
+    .menu__main{
+        .menu__title{
+            font-size: 3rem;
+            color: $white;
+        }
+    }
+    .menu__image{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        ._img{
+
+            mix-blend-mode: lighten;
+        }
+    }
+    .menu__items{
+        li.menu__item{
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+    }
+}

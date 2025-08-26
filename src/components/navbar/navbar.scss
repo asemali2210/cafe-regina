@@ -1,0 +1,36 @@
+@use '../../style/base/color.scss' as *;
+
+.navbar-main{
+    padding: 15px;
+    .navbar__items{
+        .navbar__list-items{
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: space-around;
+            .navbar__item{
+                a{
+                    font-size: 1.3rem;
+                    text-transform: uppercase;
+                }
+                &:hover{
+                    a{
+                        color: $white;
+                        transition: all .9s;
+                    }
+                }
+                
+                &.--active{
+                    a{
+
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+    &.--homepage{
+        margin-bottom: 50px;
+    }
+}

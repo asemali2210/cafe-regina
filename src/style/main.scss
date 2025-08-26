@@ -1,0 +1,29 @@
+@use './base/classes' as *;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul,p{
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: #969493;
+}
+
+
+.divider__logo{
+    position: relative;
+    .line{
+        flex: 1 1 0;
+        height: 2px;
+        background-color: #FFFFFF;
+        opacity: .1;
+    }
+    .logo{
+        margin-right: -10px;
+    }
+}

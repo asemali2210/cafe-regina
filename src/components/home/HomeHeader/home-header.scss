@@ -1,6 +1,6 @@
-@use '../../style/base/color.scss' as *;
+@use '../../../style/base/color.scss' as *;
 .home-header{
-    background-image: url('./../../../public/images/home-header-bg.png');
+    background-image: url('./../../../../public/images/home-header-bg.png');
     background-position: top left;
     background-size: 100%;
     padding: 20px 100px;

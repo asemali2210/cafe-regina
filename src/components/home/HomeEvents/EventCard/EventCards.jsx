@@ -1,14 +1,8 @@
 'use client'
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-
-
-// import required modules
 import { Pagination } from 'swiper/modules';
 import './event-cards.scss';
 import eventImg1 from '../../../../../public/images/event (1).png';
@@ -33,7 +27,8 @@ export  function EventCard({date,title,body,id,img}) {
   )
 }
 const SwiperCards = forwardRef((props, ref) => {
- let swiperInstance = null;
+
+   let swiperInstance = null;
 
     useImperativeHandle(ref, () => ({
     nextSlide: () => swiperInstance.slideNext(),
@@ -79,12 +74,9 @@ const SwiperCards = forwardRef((props, ref) => {
   return (
     <>
       <Swiper
-      onSwiper={(swiper) => (swiperInstance = swiper)}
+        onSwiper={(swiper) => (swiperInstance = swiper)}
         slidesPerView={4.5}
         spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
         modules={[Pagination]}
         className="mySwiper"
       >

@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import Navbar from '../navbar/Navbar';
+import Navbar from '../../navbar/Navbar';
 import './home-header.scss';
 import imageSlider2 from '@/../public/images/header-slider-image-2.png';
 import imageSlider1 from '@/../public/images/header-slider-image-1.png';
 import imageSlider3 from '@/../public/images/header-slider-image-3.png';
 import Link from 'next/link';
-import ArrowLink from '../LinkArrow/ArrowLink';
+import ArrowLink from '../../LinkArrow/ArrowLink';
 
 function HomeHeader() {
   return (

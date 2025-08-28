@@ -1,0 +1,18 @@
+.footer__main{
+    background-color: #0C0C0C;
+    padding: 50px 0;
+    .footer__col{
+        .text__logo{
+            color: #DCCA87;
+            font-size: 4rem;
+
+        }
+        .socail__links{
+            padding-top: 20px;
+            border-top: 1px solid #DCCA87 ;
+            a{
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.newsletter{
+    background-image: url('../../../public/images/newsletter-bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top left;
+    margin-top: -1px;
+    
+    .newsletter__form{
+        border:  2px solid #dcca8734;
+        background-color: #0C0C0C;
+        box-shadow: -23px -1px 152px -9px rgba(0,0,0,1);
+        -webkit-box-shadow: -23px -1px 152px -9px rgba(0,0,0,1);
+        -moz-box-shadow: -23px -1px 152px -9px rgba(0,0,0,1);
+        ._heading{
+            color: #DCCA87;
+            font-size: 4rem;
+            line-height: 1;
+        }
+        ._form{
+            width: 100%;
+            .newsletter__input{
+                border: 1px solid #fff;
+                background: none;
+                width: 60%;
+                padding: 10px;
+                transition: all .5s;
+                &:focus{
+                    outline: 0;
+                    border: 1px solid #DCCA87;
+                }
+            }
+            .newssletter__submit{
+                width: 150px;
+                background-color: #DCCA87;
+                font-weight: 600;
+                border: none;
+            }
+        }
+    }
+}

@@ -1,18 +1,68 @@
+'use client';
 import Image from 'next/image';
 import Navbar from '../../navbar/Navbar';
 import './home-header.scss';
 import imageSlider2 from '@/../public/images/header-slider-image-2.png';
 import imageSlider1 from '@/../public/images/header-slider-image-1.png';
 import imageSlider3 from '@/../public/images/header-slider-image-3.png';
-import Link from 'next/link';
 import ArrowLink from '../../LinkArrow/ArrowLink';
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+    
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { SplitText } from "gsap/SplitText";
+import { TextPlugin } from "gsap/TextPlugin";
+import { useEffect, useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function HomeHeader() {
+    const homeHeader = useRef();
+    const headerText1 = useRef();
+    const headerText2 = useRef();
+    const headerText3 = useRef();
+     useGSAP(() => {
+        gsap.to(
+        homeHeader.current,
+            {
+                backgroundSize: "100%",
+                duration: 3,
+            }
+        );
+        gsap.fromTo(
+        headerText1.current,
+            {y: "100%"},
+            {
+                y: 0,
+                duration: 3,
+            }
+        );
+        gsap.fromTo(
+        headerText2.current,
+            {y: "100%"},
+            {
+                y: 0,
+                duration: 1.5,
+            }
+        );
+  }, {});
   return (
-    <div className='home-header'>
+    <div className='home-header' ref={homeHeader}>
       <Navbar homepage/>
       <div className='header__content font-harmond'>
-        <p className='header__content-text'>Geniet Van Een <br /> Gezellige Tijd Bij  <br /> Café Regina</p>
+        <div className=''>
+            <div className='text__container position-relative overflow-hidden'>
+                <p className='header__content-text' ref={headerText1}>Geniet Van Een</p>
+            </div>
+            <div className='text__container position-relative overflow-hidden'>
+                <p className='header__content-text' ref={headerText2}>Gezellige Tijd Bij</p>
+            </div>
+            <div className='text__container position-relative overflow-hidden'>
+                <p className='header__cosntent-text' ref={headerText3}> Café Regina</p>
+            </div>
+        </div>
       </div>
         <div className='container'>
             <div className='row'>
@@ -22,7 +72,7 @@ function HomeHeader() {
                             <p className='_name'>CAFE </p><span className='_line'></span>
                         </div>
                         <div className='d-flex _bottom-left'>
-                            <p className='_name'>REGINA </p>
+                            <p className='_name' >REGINA </p>
                             <div className='_adrees'>GROTE MARKT 15,<br /><span> 9060 ZELZATE</span></div>
                         </div>
                     </div>

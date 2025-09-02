@@ -8,7 +8,6 @@ export default function ArrowLink({href,content, moreClass}) {
         gap: '10px',
         fontSize: '1.4rem',
         letterSpacing: '4px',
-        fontFamily: 'Inter',
         fontFamily: 'Inter, sans-serif',
         textTransform: 'uppercase',
         fonWeight: '300'

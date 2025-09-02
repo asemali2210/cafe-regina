@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
     import localFont from 'next/font/local';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/main.scss';
+import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/navbar/Navbar";
 
 const athinaRegular = localFont({
       src: '@/../../../public/fonts/Athina-Regular.otf', 
@@ -38,6 +40,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${athinaRegular} ${HarmondSemiBold}`}>
         {children}
+        <Footer />
       </body>
     </html>
   );

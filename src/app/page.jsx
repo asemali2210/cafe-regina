@@ -5,7 +5,7 @@ import HomeGallery from "@/components/home/HomeGallery/HomeGallery";
 import HomeHeader from "@/components/home/HomeHeader/HomeHeader";
 import HomeMenu from "@/components/home/HomeMenu/HomeMenu";
 import HomeSugestion from "@/components/home/Suggestions/HomeSugestion";
-import Newsletter from "@/components/Newsletter/Newsletter";
+import Newsletter from "@/components/shared/Newsletter/Newsletter";
 
 export default function Home() {
   return (

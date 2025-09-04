@@ -33,38 +33,52 @@ function Contact() {
         linkContent="VIEW MENU"
         linkHref="/drinks"
       />
-      <div className="contact__form">
-        <div className="d-flex justify-content-center align-items-center">
-          <div className="form__main">
-            <Formik
-              initialValues={initValues}
-              validationSchema={(values) => validationSchema}
-              onSubmit={handleSubmit}
-            >
-              <Form>
-                <label htmlFor="firstName">First Name</label>
-                <Field name="firstName" type="text" />
-                <ErrorMessage name="firstName" />
+      <div className="contact__form py-5">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-md-6 col-lg-8">
+              <div className="form__wrapper py-5 d-flex flex-column justify-content-center align-items-center">
+                <div className="form__header d-flex flex-column justify-content-center align-items-center">
+                  <p className="form__header-heading font-harmond">
+                    Contact Us
+                  </p>
+                  <p className="form__header-sub-heading">
+                    Will do feedback As fast as we can!
+                  </p>
+                </div>
+                <div className="form__main">
+                  <Formik
+                    initialValues={initValues}
+                    validationSchema={(values) => validationSchema}
+                    onSubmit={handleSubmit}
+                  >
+                    <Form className="__form d-flex flex-column">
+                      <label htmlFor="firstName">First Name</label>
+                      <Field name="firstName" type="text" />
+                      <ErrorMessage name="firstName" />
 
-                <label htmlFor="lastName">Last Name</label>
-                <Field name="lastName" type="text" />
-                <ErrorMessage name="lastName" />
+                      <label htmlFor="lastName">Last Name</label>
+                      <Field name="lastName" type="text" />
+                      <ErrorMessage name="lastName" />
 
-                <label htmlFor="email">Email Address</label>
-                <Field name="email" type="email" />
-                <ErrorMessage name="email" />
+                      <label htmlFor="email">Email Address</label>
+                      <Field name="email" type="email" />
+                      <ErrorMessage name="email" />
 
-                <label htmlFor="mobileNumber">Mobile Number</label>
-                <Field name="mobileNumber" type="text" />
-                <ErrorMessage name="mobileNumber" />
+                      <label htmlFor="mobileNumber">Mobile Number</label>
+                      <Field name="mobileNumber" type="text" />
+                      <ErrorMessage name="mobileNumber" />
 
-                <label htmlFor="textArea">Mobile Number</label>
-                <Field name="textArea" type="tex" as="textarea" />
-                <ErrorMessage name="textArea" />
+                      <label htmlFor="textArea">Mobile Number</label>
+                      <Field name="textArea" type="tex" as="textarea" />
+                      <ErrorMessage name="textArea" />
 
-                <button type="submit">Send</button>
-              </Form>
-            </Formik>
+                      <button type="submit">Send</button>
+                    </Form>
+                  </Formik>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,33 @@
+@use "@/style/base/color.scss" as *;
+.contact__page {
+  .contact__form {
+    color: $white;
+    background-image: url("/images/contact-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .form__header {
+      .form__header-heading {
+        color: $primary;
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+      .form__header-sub-heading {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+    }
+    .form__wrapper {
+      border: 2px solid #dcca8734;
+      background-color: #0c0c0c;
+      box-shadow: -23px -1px 152px -9px rgba(0, 0, 0, 1);
+      -webkit-box-shadow: -23px -1px 152px -9px rgba(0, 0, 0, 1);
+      -moz-box-shadow: -23px -1px 152px -9px rgba(0, 0, 0, 1);
+    }
+    .__form {
+      display: flex;
+      label {
+        color: $white;
+      }
+    }
+  }
+}

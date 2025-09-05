@@ -1,48 +1,66 @@
 @use "@/style/base/_color.scss" as *;
-.about__page {
-  .about__main {
+
+/* About page block */
+.about-page {
+  &__main {
     padding: 50px 0;
-    .timeline__years {
+    /* Years bar */
+    .about-timeline__years {
       position: relative;
-      .cursor__box {
-        position: absolute;
-        color: red;
-        font-size: 3rem;
-        bottom: 0;
-      }
     }
-    .year-items {
+    .about-timeline__year-list {
+      padding: 0;
       display: flex;
-      padding-bottom: 40px;
-      border-bottom: 1px solid #fff;
-      .year-item {
+      padding: 40px 10px;
+      /* Baseline under the years */
+      border-bottom: 1px solid $white;
+      .about-timeline__year {
         text-align: center;
         cursor: pointer;
         font-size: 1.2rem;
         font-weight: 700;
         flex: 1 1 0;
-        &.is-active {
+        position: relative;
+        /* Keyboard focus */
+        &:focus-visible {
+          outline: 2px dashed $primary;
+          outline-offset: 4px;
+        }
+        &--active {
           color: $primary;
         }
       }
     }
-    .arrow__up {
+    /* Restored image-based indicator */
+    .about-timeline__indicator {
       left: 50px;
       z-index: 100;
       background-color: $dark-1;
-
       img {
         position: absolute;
-        bottom: 0;
+        bottom: 0px;
         width: 30px;
-        left: 150px;
+        left: 160px;
         background-color: $dark-1;
       }
     }
-    .descriptions__container {
+    .about-timeline__descriptions {
       margin-top: 40px;
-      .descrption__body {
-        .timeline__heading {
+      .about-timeline__body {
+        /* Responsive min-height to reduce layout jump */
+        min-height: 14rem;
+        @media (min-width: 576px) {
+          min-height: 16rem;
+        }
+        @media (min-width: 992px) {
+          min-height: 18rem;
+        }
+        /* Optional scroll when content is very long */
+        &--scroll {
+          max-height: 28rem;
+          overflow-y: auto;
+        }
+        .about-timeline__title {
           font-size: 3rem;
           margin-bottom: 20px;
         }

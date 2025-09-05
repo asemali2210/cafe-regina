@@ -1,33 +1,80 @@
 @use "@/style/base/color.scss" as *;
-.contact__page {
-  .contact__form {
+/* Contact page block */
+.contact-page {
+  .contact-form {
     color: $white;
     background-image: url("/images/contact-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
-    .form__header {
-      .form__header-heading {
-        color: $primary;
-        font-size: 3rem;
-        margin-bottom: 10px;
-      }
-      .form__header-sub-heading {
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
-    }
-    .form__wrapper {
+    &__wrapper {
       border: 2px solid #dcca8734;
       background-color: #0c0c0c;
       box-shadow: -23px -1px 152px -9px rgba(0, 0, 0, 1);
       -webkit-box-shadow: -23px -1px 152px -9px rgba(0, 0, 0, 1);
       -moz-box-shadow: -23px -1px 152px -9px rgba(0, 0, 0, 1);
     }
-    .__form {
+    &__header {
+      text-align: center;
+    }
+    &__title {
+      color: $primary;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    &__subtitle {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    &__body {
+    }
+    &__form {
       display: flex;
+      flex-direction: column;
+      gap: 12px;
       label {
-        color: $white;
+        color: $gray-2;
+        margin-bottom: 5px;
       }
+      input,
+      textarea {
+        background-color: $dark-1;
+        border: 2px solid #fff;
+        padding: 10px 15px;
+        color: $gray-2;
+        &:focus {
+          outline: 0;
+          transition: all 0.3s;
+          border: 2px solid #dcca87;
+        }
+      }
+    }
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    &__group {
+      display: flex;
+      flex-direction: column;
+      margin: 5px 0;
+    }
+    &__error {
+      color: $primary;
+      font-size: 0.875rem;
+      margin-top: 2px;
+    }
+    &__submit {
+      background-color: $primary;
+      border: none;
+      width: 150px;
+      padding: 10px;
+      font-size: 1.2rem;
+      align-self: center;
+      margin-top: 30px;
+      cursor: pointer;
     }
   }
 }

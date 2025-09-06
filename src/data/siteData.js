@@ -161,6 +161,18 @@ export const smallHungerColumns = [
   },
 ];
 
+// Suggestions (Weekend Suggesties) data — single column list
+export const suggestionsItems = [
+  { title: "Steak tartaar", type: "Vlaams klassieker" },
+  { title: "Stoofvlees van varkenswangetjes", type: "Vlaams klassieker" },
+  { title: "Steak met peper of champignonsaus", type: "Vlaams klassieker" },
+  { title: "Konijn op grootmoeders wijze", type: "Weekend suggestie" },
+  { title: "Vol-au-vent", type: "Weekend suggestie" },
+  { title: "Vispannetje met puree", type: "Weekend suggestie" },
+  { title: "Gegratineerde witloofrolletjes", type: "Comfort gerecht" },
+  { title: "Dagelijkse seizoenssuggestie", type: "Vraag in de zaak" },
+];
+
 // About page timeline data (moved from about page)
 export const descriptionsData = [
   {

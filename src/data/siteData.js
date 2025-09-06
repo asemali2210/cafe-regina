@@ -113,6 +113,54 @@ export const menuColumns = [
   },
 ];
 
+// Small Hunger page menu data
+export const smallHungerColumns = [
+  {
+    heading: "Savory Plates",
+    items: [
+      { title: "Farm Plank", price: 14.5, type: "Cheeses, cold cuts, fresh bread" },
+      { title: "Mini Meatballs", price: 8.5, type: "Tomato dip, herbs" },
+      { title: "Cheese Croquettes (2)", price: 9.0, type: "Served with salad" },
+      { title: "Shrimp Croquettes (2)", price: 12.5, type: "Lemon & parsley" },
+      { title: "Nachos Regina", price: 10.0, type: "Cheddar, salsa, jalapeño" },
+      { title: "Soup of the Day", price: 6.0, type: "With rustic bread" },
+    ],
+  },
+  {
+    heading: "Toast & Panini",
+    items: [
+      { title: "Ham & Cheese Toastie", price: 6.5, type: "White or brown bread" },
+      { title: "Croque Monsieur", price: 7.5, type: "Classic" },
+      { title: "Croque Madame", price: 8.5, type: "With fried egg" },
+      { title: "Panini Caprese", price: 8.5, type: "Mozzarella, tomato, pesto" },
+      { title: "Panini Chicken", price: 9.5, type: "Grilled chicken, cheddar" },
+      { title: "Tuna Melt", price: 8.5, type: "Red onion, cheddar" },
+    ],
+  },
+  {
+    heading: "Pancakes & Waffles",
+    items: [
+      { title: "Plain Pancakes", price: 6.5, type: "Butter & sugar" },
+      { title: "Pancakes with Syrup", price: 7.5, type: "Maple or caramel" },
+      { title: "Nutella Pancakes", price: 8.5, type: "Hazelnut spread" },
+      { title: "Belgian Waffle", price: 7.5, type: "Powdered sugar" },
+      { title: "Waffle with Fruit", price: 9.0, type: "Seasonal fruit" },
+      { title: "Waffle à la Mode", price: 9.5, type: "With vanilla ice cream" },
+    ],
+  },
+  {
+    heading: "Sweet Treats",
+    items: [
+      { title: "Apple Pie", price: 5.5, type: "Whipped cream" },
+      { title: "Chocolate Brownie", price: 4.5, type: "Dark chocolate chips" },
+      { title: "New York Cheesecake", price: 5.5, type: "Berry coulis" },
+      { title: "Tiramisu", price: 6.0, type: "Cocoa dusted" },
+      { title: "Ice Cream Trio", price: 5.5, type: "Vanilla, chocolate, strawberry" },
+      { title: "Waffle Bites", price: 4.5, type: "Small portion" },
+    ],
+  },
+];
+
 // About page timeline data (moved from about page)
 export const descriptionsData = [
   {

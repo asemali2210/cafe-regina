@@ -19,7 +19,7 @@ export default function EventDetailPage({ params }) {
           <ArrowLink href="/" content="Back To Home" />
         </div>
 
-        <div className="event-row row">
+        <div className="event-row row gx-4">
           <div className="col-12 col-lg-5 event-row__image">
             <Image
               src={ev.imgSrc}
@@ -27,6 +27,7 @@ export default function EventDetailPage({ params }) {
               className="img-fluid"
               width={800}
               height={600}
+              quality={100}
             />
           </div>
           <div className="col-12 col-lg-7 d-flex flex-column justify-content-center">
@@ -39,4 +40,3 @@ export default function EventDetailPage({ params }) {
     </div>
   );
 }
-

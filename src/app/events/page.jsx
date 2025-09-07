@@ -16,7 +16,7 @@ function EventsPage() {
 
         <div className="events-list">
           {events.map((ev) => (
-            <div key={ev.id} className="event-row row">
+            <div key={ev.id} className="event-row row gx-4">
               <div className="col-12 col-lg-5 event-row__image">
                 <Image
                   src={ev.imgSrc}
@@ -40,4 +40,3 @@ function EventsPage() {
 }
 
 export default EventsPage;
-

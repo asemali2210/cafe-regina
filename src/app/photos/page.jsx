@@ -1,8 +1,7 @@
-import DividerLogo from "@/components/DividerLogo/DividerLogo";
 import Newsletter from "@/components/shared/Newsletter/Newsletter";
 import PageHeader from "@/components/shared/PageHeader/PageHeader";
 import React from "react";
-import HomeGallery from "@/components/home/HomeGallery/HomeGallery";
+import PhotosGallery from "@/components/gallery/PhotosGallery/PhotosGallery";
 
 function PhotosPage() {
   return (
@@ -16,12 +15,10 @@ function PhotosPage() {
         linkContent="contact"
         linkHref="/contact"
       />
-
-      <HomeGallery />
+      <PhotosGallery />
       <Newsletter />
     </div>
   );
 }
 
 export default PhotosPage;
-

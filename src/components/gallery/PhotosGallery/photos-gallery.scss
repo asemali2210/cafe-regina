@@ -1,0 +1,99 @@
+@use "@/style/base/color.scss" as *;
+
+.photos-gallery {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  &__item {
+    overflow: hidden;
+    border-radius: 8px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__indicator {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+}
+
+.indicator__arrow {
+  background: transparent;
+  border: 1px solid rgba($white, 0.2);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+}
+
+.indicator__track {
+  position: relative;
+  flex: 1;
+  padding-top: 18px; // space for numbers
+}
+
+.indicator__track::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: rgba($white, 0.2);
+}
+
+.indicator__progress {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: $primary;
+}
+
+.indicator__list {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.indicator__item {
+  color: rgba($white, 0.6);
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+
+.indicator__item.--active {
+  color: $white;
+}
+
+@media (max-width: 992px) {
+  .photos-gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .indicator__list {
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .photos-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

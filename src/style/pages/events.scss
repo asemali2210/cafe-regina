@@ -1,14 +1,14 @@
 @use "@/style/base/_color.scss" as *;
 
 .events-page {
+  .back-link {
+    border-top: 2px solid #96949331;
+    border-bottom: 2px solid #96949331;
+  }
   .events-list {
     display: flex;
     flex-direction: column;
     gap: 32px;
-  }
-
-  .event-row {
-    /* Use Bootstrap gutters instead of CSS gap to avoid wrap issues */
   }
 
   .event-row__image img {
@@ -23,11 +23,13 @@
     letter-spacing: 1px;
     font-weight: 600;
     margin-bottom: 6px;
+    font-size: 1.4rem;
+    letter-spacing: 10px;
   }
 
   .event-row__title {
     color: $white;
-    font-size: 1.6rem;
+    font-size: 2.2rem;
     margin-bottom: 6px;
   }
 

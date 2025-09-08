@@ -15,7 +15,7 @@ export default function ArrowLink({ href, content, moreClass }) {
   return (
     <Link
       href={href}
-      className={`d-flex align-items-center ${moreClass && moreClass}`}
+      className={`d-flex align-items-center ${moreClass ? moreClass : ""}`}
       style={styel}
     >
       {content}

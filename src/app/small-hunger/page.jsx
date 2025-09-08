@@ -6,6 +6,12 @@ import "@/style/pages/drinks.scss";
 import { smallHungerColumns } from "@/data/siteData";
 
 function SmallHungerPage() {
+  const formatPrice = (n) =>
+    new Intl.NumberFormat("nl-BE", {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 2,
+    }).format(n);
   return (
     <div className="drinks-page bg-dark-1">
       <PageHeader
@@ -40,7 +46,7 @@ function SmallHungerPage() {
                         <div className="drinks-menu__row">
                           <span className="drinks-menu__title">{item.title}</span>
                           <span className="drinks-menu__dots" />
-                          <span className="drinks-menu__price">${item.price.toFixed(2)}</span>
+                          <span className="drinks-menu__price">{formatPrice(item.price)}</span>
                         </div>
                         <div className="drinks-menu__meta">{item.type}</div>
                       </li>
@@ -60,4 +66,3 @@ function SmallHungerPage() {
 }
 
 export default SmallHungerPage;
-

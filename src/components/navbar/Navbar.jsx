@@ -35,42 +35,42 @@ function Navbar({ homepage }) {
                 </li>
                 <li
                   className={`navbar__item ${
-                    pathname === "drinks" ? `--active` : ``
+                    pathname === "/drinks" ? `--active` : ``
                   }`}
                 >
                   <Link href="/drinks">drinks</Link>
                 </li>
                 <li
                   className={`navbar__item ${
-                    pathname === "small-hunger" ? `--active` : ``
+                    pathname === "/small-hunger" ? `--active` : ``
                   }`}
                 >
                   <Link href="/small-hunger">small hunger</Link>
                 </li>
                 <li
                   className={`navbar__item ${
-                    pathname === "suggestions" ? `--active` : ``
+                    pathname === "/suggestions" ? `--active` : ``
                   }`}
                 >
                   <Link href="/suggestions">suggestions</Link>
                 </li>
                 <li
                   className={`navbar__item ${
-                    pathname === "photos" ? `--active` : ``
+                    pathname === "/photos" ? `--active` : ``
                   }`}
                 >
                   <Link href="/photos">photos</Link>
                 </li>
                 <li
                   className={`navbar__item ${
-                    pathname === "about" ? `--active` : ``
+                    pathname === "/about" ? `--active` : ``
                   }`}
                 >
                   <Link href="/about">about us</Link>
                 </li>
                 <li
                   className={`navbar__item ${
-                    pathname === "contact" ? `--active` : ``
+                    pathname === "/contact" ? `--active` : ``
                   }`}
                 >
                   <Link href="/contact">contact us</Link>

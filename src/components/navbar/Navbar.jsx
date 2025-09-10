@@ -7,20 +7,28 @@ import logo from "@/public/images/logo.svg";
 import { FaBarsProgress } from "react-icons/fa6";
 import { useState } from "react";
 import { motion } from "framer-motion";
-
+import { navItems } from "@/data/siteData";
 const containerDuration = 0.25;
 const containerVariants = {
   open: {
     height: "auto",
     paddingTop: 10,
     paddingBottom: 10,
-    transition: { duration: containerDuration, ease: "easeOut", when: "beforeChildren" },
+    transition: {
+      duration: containerDuration,
+      ease: "easeOut",
+      when: "beforeChildren",
+    },
   },
   closed: {
     height: 0,
     paddingTop: 0,
     paddingBottom: 0,
-    transition: { duration: containerDuration, ease: "easeInOut", when: "afterChildren" },
+    transition: {
+      duration: containerDuration,
+      ease: "easeInOut",
+      when: "afterChildren",
+    },
   },
 };
 const listVariants = {
@@ -32,31 +40,26 @@ const listVariants = {
   },
 };
 const itemVariants = {
-  closed: { y: 12, opacity: 0 },
+  closed: { y: "100%", opacity: 0 },
   open: { y: 0, opacity: 1 },
 };
 
-const navItems = [
-  { label: "home", href: "/", path: "/" },
-  { label: "drinks", href: "/drinks", path: "/drinks" },
-  { label: "small hunger", href: "/small-hunger", path: "/small-hunger" },
-  { label: "suggestions", href: "/suggestions", path: "/suggestions" },
-  { label: "photos", href: "/photos", path: "/photos" },
-  { label: "about us", href: "/about", path: "/about" },
-  { label: "contact us", href: "/contact", path: "/contact" },
-];
-
 export const MotionLi = ({ content, href, pathName, existPathName }) => {
   return (
-    <motion.li
-      variants={itemVariants}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className={`navbar__item ${pathName === existPathName ? "--active" : ""}`}
-    >
-      <Link href={href}>{content}</Link>
-    </motion.li>
+    <li className="overflow-hidden">
+      <motion.div
+        variants={itemVariants}
+        transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+        className={`navbar__item ${
+          pathName === existPathName ? "--active" : ""
+        }`}
+      >
+        <Link href={href}>{content}</Link>
+      </motion.div>
+    </li>
   );
 };
+
 function Navbar({ homepage }) {
   const [openNav, setOpenNav] = useState(false);
   const pathname = usePathname();
@@ -68,7 +71,7 @@ function Navbar({ homepage }) {
     <div className={`navbar-main  ${homepage && "--homepage"}`}>
       <div className="container">
         <div className="row align-items-md-center ">
-          <div className="col-4 col-md-3">
+          <div className="col-3 col-md-1 ">
             <div className="navbar__logo">
               <Link href="/">
                 <Image
@@ -81,7 +84,7 @@ function Navbar({ homepage }) {
               </Link>
             </div>
           </div>
-          <div className="col-8 d-md-none d-flex justify-content-end">
+          <div className="col-9 d-lg-none d-flex justify-content-end">
             <button
               className="nav__toggler"
               onClick={toggleNav}
@@ -92,9 +95,9 @@ function Navbar({ homepage }) {
               <FaBarsProgress />
             </button>
           </div>
-          <div className="col-12 col-md-9">
+          <div className="col-12 col-lg-11">
             {/* Desktop menu: always visible on md+ */}
-            <div className="navbar__items d-none d-md-block">
+            <div className="navbar__items d-none d-lg-block">
               <ul className="navbar__list-items list-unstyled font-inter">
                 {navItems.map((item) => (
                   <li
@@ -112,7 +115,7 @@ function Navbar({ homepage }) {
             {/* Mobile menu: keep mounted, animate state */}
             <motion.div
               id="mobile-menu"
-              className="navbar__items d-md-none"
+              className="navbar__items d-lg-none"
               variants={containerVariants}
               initial={false}
               animate={openNav ? "open" : "closed"}

@@ -3,6 +3,7 @@ import PageHeader from "@/components/shared/PageHeader/PageHeader";
 import React from "react";
 import "@/style/pages/drinks.scss";
 import { menuColumns } from "@/data/siteData";
+import DividerLogo from "@/components/DividerLogo/DividerLogo";
 
 export const metadata = {
   title: "Drinks Menu",

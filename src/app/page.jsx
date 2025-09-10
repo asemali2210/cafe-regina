@@ -1,9 +1,9 @@
-import Footer from "@/components/Footer/Footer";
-import HomeEvents from "@/components/home/HomeEvents/HomeEvents";
-import HomeGallery from "@/components/home/HomeGallery/HomeGallery";
-import HomeHeader from "@/components/home/HomeHeader/HomeHeader";
-import HomeMenu from "@/components/home/HomeMenu/HomeMenu";
-import Newsletter from "@/components/shared/Newsletter/Newsletter";
+import HomeEvents from "./../components/home/HomeEvents/HomeEvents";
+import HomeMenu from "./../components/home/HomeMenu/HomeMenu";
+import HomeHeader from "./../components/home/HomeHeader/HomeHeader";
+import HomeGallery from "./../components/home/HomeGallery/HomeGallery";
+import Newsletter from "./../components/shared/Newsletter/Newsletter";
+import Footer from "./../components/Footer/Footer";
 
 export const metadata = {
   title: "Home",
@@ -13,12 +13,13 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div>
+    <>
       <HomeHeader />
+      <HomeMenu />
       <HomeEvents />
       <HomeGallery />
       <Newsletter />
       <Footer />
-    </div>
+    </>
   );
 }

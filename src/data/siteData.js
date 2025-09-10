@@ -1,3 +1,12 @@
+export const navItems = [
+  { label: "home", href: "/", path: "/" },
+  { label: "drinks", href: "/drinks", path: "/drinks" },
+  { label: "small hunger", href: "/small-hunger", path: "/small-hunger" },
+  { label: "suggestions", href: "/suggestions", path: "/suggestions" },
+  { label: "photos", href: "/photos", path: "/photos" },
+  { label: "about us", href: "/about", path: "/about" },
+  { label: "contact us", href: "/contact", path: "/contact" },
+];
 // Centralized site data: drinks menu, about timeline, events
 
 export const menuColumns = [
@@ -118,7 +127,11 @@ export const smallHungerColumns = [
   {
     heading: "Savory Plates",
     items: [
-      { title: "Farm Plank", price: 14.5, type: "Cheeses, cold cuts, fresh bread" },
+      {
+        title: "Farm Plank",
+        price: 14.5,
+        type: "Cheeses, cold cuts, fresh bread",
+      },
       { title: "Mini Meatballs", price: 8.5, type: "Tomato dip, herbs" },
       { title: "Cheese Croquettes (2)", price: 9.0, type: "Served with salad" },
       { title: "Shrimp Croquettes (2)", price: 12.5, type: "Lemon & parsley" },
@@ -129,10 +142,18 @@ export const smallHungerColumns = [
   {
     heading: "Toast & Panini",
     items: [
-      { title: "Ham & Cheese Toastie", price: 6.5, type: "White or brown bread" },
+      {
+        title: "Ham & Cheese Toastie",
+        price: 6.5,
+        type: "White or brown bread",
+      },
       { title: "Croque Monsieur", price: 7.5, type: "Classic" },
       { title: "Croque Madame", price: 8.5, type: "With fried egg" },
-      { title: "Panini Caprese", price: 8.5, type: "Mozzarella, tomato, pesto" },
+      {
+        title: "Panini Caprese",
+        price: 8.5,
+        type: "Mozzarella, tomato, pesto",
+      },
       { title: "Panini Chicken", price: 9.5, type: "Grilled chicken, cheddar" },
       { title: "Tuna Melt", price: 8.5, type: "Red onion, cheddar" },
     ],
@@ -155,7 +176,11 @@ export const smallHungerColumns = [
       { title: "Chocolate Brownie", price: 4.5, type: "Dark chocolate chips" },
       { title: "New York Cheesecake", price: 5.5, type: "Berry coulis" },
       { title: "Tiramisu", price: 6.0, type: "Cocoa dusted" },
-      { title: "Ice Cream Trio", price: 5.5, type: "Vanilla, chocolate, strawberry" },
+      {
+        title: "Ice Cream Trio",
+        price: 5.5,
+        type: "Vanilla, chocolate, strawberry",
+      },
       { title: "Waffle Bites", price: 4.5, type: "Small portion" },
     ],
   },

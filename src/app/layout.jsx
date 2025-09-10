@@ -2,19 +2,16 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/main.scss";
-import Footer from "@/components/Footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
+import Footer from "./../components/Footer/Footer";
 
 const athinaRegular = localFont({
-  src: "@/../../../public/fonts/Athina-Regular.otf",
+  src: "../../public/fonts/Athina-Regular.otf",
   display: "swap",
-  subsets: ["latin"],
 });
 
 const HarmondSemiBold = localFont({
-  src: "@/../../../public/fonts/Harmond-SemBdItaCond.otf",
+  src: "../../public/fonts/Harmond-SemBdItaCond.otf",
   display: "swap",
-  subsets: ["latin"],
 });
 
 const geistSans = Geist({
@@ -41,9 +38,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${athinaRegular} ${HarmondSemiBold}`}
+        className={`${geistSans.variable} ${geistMono.variable} ${athinaRegular.className} ${HarmondSemiBold.className}`}
       >
-        {children}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

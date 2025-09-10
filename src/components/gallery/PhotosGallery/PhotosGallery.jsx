@@ -1,12 +1,12 @@
 'use client';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import arrowLeft from '@/../public/images/arrow-to-left.svg';
-import arrowRight from '@/../public/images/arrow-to-right.svg';
-import img1 from '@/../public/images/gallery-photo (1).png';
-import img2 from '@/../public/images/gallery-photo (2).png';
-import img3 from '@/../public/images/gallery-photo (3).png';
-import img4 from '@/../public/images/gallery-photo (4).png';
+import arrowLeft from '@/public/images/arrow-to-left.svg';
+import arrowRight from '@/public/images/arrow-to-right.svg';
+import img1 from '@/public/images/gallery-photo (1).png';
+import img2 from '@/public/images/gallery-photo (2).png';
+import img3 from '@/public/images/gallery-photo (3).png';
+import img4 from '@/public/images/gallery-photo (4).png';
 import './photos-gallery.scss';
 
 const images = [img1, img2, img3, img4, img1, img2, img3, img4, img1, img2];
@@ -60,4 +60,3 @@ function PhotosGallery() {
 }
 
 export default PhotosGallery;
-

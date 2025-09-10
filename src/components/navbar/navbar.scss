@@ -33,13 +33,13 @@
     background: none;
     border: none;
     color: $white;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   &.--homepage {
     margin-bottom: 50px;
   }
-  @media screen and (max-width: 768px) {
-    background-color: #000;
+  @media screen and (max-width: 992px) {
+    background-color: #00000041;
     position: relative;
     border-radius: 15px;
     margin: 15px;
@@ -47,7 +47,6 @@
     overflow: hidden;
     .navbar__items {
       padding: 0;
-      background-color: #000;
       font-size: 1.5rem;
       height: 0;
       overflow: hidden;
@@ -55,6 +54,18 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
+    }
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1440px) {
+    .navbar__items {
+      .navbar__list-items {
+        gap: 0;
+        .navbar__item {
+          a {
+            font-size: 1rem;
+          }
+        }
       }
     }
   }

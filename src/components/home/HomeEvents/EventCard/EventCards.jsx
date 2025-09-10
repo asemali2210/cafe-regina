@@ -8,7 +8,7 @@ import "./event-cards.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useImperativeHandle, forwardRef } from "react";
-import { events } from "@/data/siteData";
+import { events } from "./../../../../data/siteData";
 
 export function EventCard({ date, title, body, id, img }) {
   return (

@@ -1,5 +1,4 @@
 "use client";
-import { useSwiper } from "swiper/react";
 
 import Image from "next/image";
 import SwiperCards from "./EventCard/EventCards";

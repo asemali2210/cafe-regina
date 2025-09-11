@@ -64,8 +64,8 @@ function HomeHeader() {
         </div>
       </div>
       <div className="container">
-        <div className="row row-gap-md-0 row-gap-5">
-          <div className="col-md-2 col-12 d-flex flex-column justify-content-md-between  align-items-center">
+        <div className="row row-gap-xl-0 row-gap-5">
+          <div className="col-xl-2 col-md-6 col-12 d-flex flex-column justify-content-md-between  align-items-center">
             <div className="header__top-text d-flex flex-column align-items-center justify-content-center font-athina">
               <div className="__top ">
                 <p className="_name">CAFE </p>
@@ -90,8 +90,8 @@ function HomeHeader() {
               />
             </div>
           </div>
-          <div className="col-md-8">
-            <div className="image__slider-main d-flex justify-content-center">
+          <div className="col-xl-7 col-md-12 order-xl-1 order-md-2">
+            <div className="image__slider-main d-flex justify-content-center mb-lg-0 mb-md-5">
               <Image
                 src={imageSlider1}
                 width={380}
@@ -101,7 +101,7 @@ function HomeHeader() {
               />
             </div>
           </div>
-          <div className="col-md-2">
+          <div className="col-xl-3 col-md-6 order-xl-2 order-md-1 ">
             <div className="image__slider-right d-flex justify-content-center">
               <Image
                 src={imageSlider3}

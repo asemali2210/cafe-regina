@@ -70,8 +70,8 @@ function Navbar({ homepage }) {
   return (
     <div className={`navbar-main  ${homepage && "--homepage"}`}>
       <div className="container">
-        <div className="row align-items-md-center ">
-          <div className="col-3 col-md-1 ">
+        <div className="row align-items-lg-center justify-content-between ">
+          <div className="col-2 col-md-1 ">
             <div className="navbar__logo">
               <Link href="/">
                 <Image

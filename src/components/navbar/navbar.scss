@@ -2,6 +2,9 @@
 
 .navbar-main {
   padding: 15px;
+  border-bottom: 2px solid #ffffff28;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
   .navbar__items {
     .navbar__list-items {
       margin: 0;
@@ -37,19 +40,25 @@
   }
   &.--homepage {
     margin-bottom: 50px;
+    border-bottom: none;
+    width: 100%;
   }
   @media screen and (max-width: 992px) {
-    background-color: #00000041;
+    background-color: #070707;
     position: relative;
     border-radius: 15px;
-    margin: 15px;
+    margin: 0 15px;
+    padding-bottom: 15px;
     z-index: 1000;
     overflow: hidden;
+    position: absolute;
+    top: 0;
     .navbar__items {
       padding: 0;
       font-size: 1.5rem;
       height: 0;
       overflow: hidden;
+
       .navbar__list-items {
         flex-direction: column;
         justify-content: center;

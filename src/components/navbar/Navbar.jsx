@@ -14,6 +14,9 @@ const containerVariants = {
     height: "auto",
     paddingTop: 10,
     paddingBottom: 10,
+
+    borderTop: "2px solid #ffffff28",
+    marginTop: " 15px",
     transition: {
       duration: containerDuration,
       ease: "easeOut",
@@ -24,6 +27,8 @@ const containerVariants = {
     height: 0,
     paddingTop: 0,
     paddingBottom: 0,
+    marginTop: "0",
+
     transition: {
       duration: containerDuration,
       ease: "easeInOut",
@@ -40,8 +45,11 @@ const listVariants = {
   },
 };
 const itemVariants = {
-  closed: { y: "100%", opacity: 0 },
-  open: { y: 0, opacity: 1 },
+  closed: { y: "100%", opacity: 0, border: "none" },
+  open: {
+    y: 0,
+    opacity: 1,
+  },
 };
 
 export const MotionLi = ({ content, href, pathName, existPathName }) => {
@@ -71,7 +79,7 @@ function Navbar({ homepage }) {
     <div className={`navbar-main  ${homepage && "--homepage"}`}>
       <div className="container">
         <div className="row align-items-lg-center justify-content-between ">
-          <div className="col-2 col-md-1 ">
+          <div className="col-3 col-md-2 ">
             <div className="navbar__logo">
               <Link href="/">
                 <Image
@@ -95,7 +103,7 @@ function Navbar({ homepage }) {
               <FaBarsProgress />
             </button>
           </div>
-          <div className="col-12 col-lg-11">
+          <div className="col-12 col-lg-10">
             {/* Desktop menu: always visible on md+ */}
             <div className="navbar__items d-none d-lg-block">
               <ul className="navbar__list-items list-unstyled font-inter">

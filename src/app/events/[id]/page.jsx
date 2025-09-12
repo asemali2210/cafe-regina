@@ -11,7 +11,7 @@ export default function EventDetailPage({ params }) {
 
   return (
     <div className="events-page bg-dark-1">
-      <Navbar />
+      <Navbar homepage />
       <div className="container-fluid p-0">
         <div className="back-link d-flex justify-content-center py-4">
           <ArrowLink

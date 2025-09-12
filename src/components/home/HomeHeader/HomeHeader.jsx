@@ -10,62 +10,71 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import ArrowLink from "./../../LinkArrow/ArrowLink";
+import { scale } from "motion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function HomeHeader() {
   const homeHeader = useRef();
   const headerText1 = useRef();
   const headerText2 = useRef();
   const headerText3 = useRef();
-  gsap.registerPlugin(ScrollTrigger);
+  const headerImgZoomIn = useRef();
+  const headerTextFadeOut = useRef();
+  const headerTextFadeOut2 = useRef();
 
-  useGSAP(() => {
-    gsap.to(homeHeader.current, {
-      backgroundSize: "cover",
-      duration: 3,
-    });
-    gsap.fromTo(
-      headerText1.current,
-      { y: "100%" },
-      {
-        y: 0,
+  useGSAP(
+    () => {
+      // initial entrance
+      gsap.to(homeHeader.current, {
+        backgroundSize: "cover",
         duration: 3,
-      }
-    );
-    gsap.fromTo(
-      headerText2.current,
-      { y: "100%" },
-      {
-        y: 0,
-        duration: 1.5,
-      }
-    );
-  }, {});
+      });
+
+      gsap.fromTo(
+        headerText1.current,
+        { y: "100%" },
+        {
+          y: 0,
+          duration: 3,
+        }
+      );
+      gsap.fromTo(
+        headerText2.current,
+        { y: "100%" },
+        {
+          y: 0,
+          duration: 1.5,
+        }
+      );
+
+      // one timeline to control zoom + fade while pinned
+      const tl = gsap.timeline({
+        defaults: { ease: "none" },
+        scrollTrigger: {
+          trigger: homeHeader.current, // pin the whole header section
+          start: "top top",
+          end: "+=500", // adjust scroll distance as you like
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      tl.to(headerTextFadeOut.current, { opacity: 0 }, 0) // fade all text out in sync
+        .to(headerTextFadeOut2.current, { skew: 1.2 }, 0);
+    },
+    { scope: homeHeader } // keeps selectors scoped & auto-cleans on unmount
+  );
 
   return (
     <div className="home-header" ref={homeHeader}>
       <Navbar homepage />
-      <div className="header__content font-harmond">
-        <div>
-          <div className="text__container position-relative overflow-hidden">
-            <p className="header__content-text" ref={headerText1}>
-              Geniet Van Een
-            </p>
-          </div>
-          <div className="text__container position-relative overflow-hidden">
-            <p className="header__content-text" ref={headerText2}>
-              Gezellige Tijd Bij
-            </p>
-          </div>
-          <div className="text__container position-relative overflow-hidden">
-            <p className="header__content-text" ref={headerText3}>
-              Café Regina
-            </p>
-          </div>
-        </div>
-      </div>
+
       <div className="container">
         <div className="row row-gap-xl-0 row-gap-5">
-          <div className="col-xl-2 col-md-6 col-12 d-flex flex-column justify-content-md-between  align-items-center">
+          <div className="col-xl-3 order-1  col-md-6 col-12 d-flex flex-column order-1 row-gap-5 order-1  align-items-center">
             <div className="header__top-text d-flex flex-column align-items-center justify-content-center font-athina">
               <div className="__top ">
                 <p className="_name">CAFE </p>
@@ -83,34 +92,52 @@ function HomeHeader() {
             <div className=" image__slider-left d-flex justify-content-center ">
               <Image
                 src={imageSlider2}
-                width={150}
-                height={300}
                 alt="Café Regina header image (left)"
                 className="img-fluid"
+                quality={100}
               />
             </div>
           </div>
-          <div className="col-xl-7 col-md-12 order-xl-1 order-md-2">
-            <div className="image__slider-main d-flex justify-content-center mb-lg-0 mb-md-5">
-              <Image
-                src={imageSlider1}
-                width={380}
-                height={200}
-                alt="Café Regina header image (center)"
-                className="img-fluid"
-              />
+          <div className="col-xl-6 col-md-12 position-relative overflow-hidden d-flex  justify-content-center align-items-center  order-xl-1 order-md-0  overflow-hidden">
+            <div
+              className="header__content font-harmond"
+              ref={headerTextFadeOut}
+              style={{ zIndex: 99 }}
+            >
+              <div>
+                <div className="text__container position-relative overflow-hidden">
+                  <p className="header__content-text" ref={headerText1}>
+                    Geniet Van Een
+                  </p>
+                </div>
+                <div className="text__container position-relative overflow-hidden">
+                  <p className="header__content-text" ref={headerText2}>
+                    Gezellige Tijd Bij
+                  </p>
+                </div>
+                <div className="text__container position-relative overflow-hidden">
+                  <p className="header__content-text" ref={headerText3}>
+                    Café Regina
+                  </p>
+                </div>
+              </div>
             </div>
+            <Image
+              src={imageSlider1}
+              ref={headerImgZoomIn}
+              alt="Café Regina header image (center)"
+              className="img-fluid"
+              quality={100}
+            />
           </div>
-          <div className="col-xl-3 col-md-6 order-xl-2 order-md-1 ">
-            <div className="image__slider-right d-flex justify-content-center">
-              <Image
-                src={imageSlider3}
-                width={200}
-                height={400}
-                alt="Café Regina header image (right)"
-                className="img-fluid"
-              />
-            </div>
+          <div className="col-xl-3 col-md-6 order-xl-2 order-md-2 order-2 justify-content-center align-items-center d-flex flex-column ">
+            <Image
+              ref={headerTextFadeOut2}
+              src={imageSlider3}
+              alt="Café Regina header image (right)"
+              className="img-fluid"
+              quality={100}
+            />
             <div className="bottom__content">
               <p className="header__right-text font-inter">
                 Café Regina is not only the oldest, but also the nicest café in

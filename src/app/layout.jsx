@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${athinaRegular.className} ${HarmondSemiBold.className}`}
+        className={`${HarmondSemiBold.className} ${geistSans.variable} ${geistMono.variable} ${athinaRegular.className} `}
       >
         <main>{children}</main>
         <Footer />

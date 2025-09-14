@@ -9,13 +9,13 @@ import { useRef } from "react";
 function HomeEvents() {
   const swiperRef = useRef();
   return (
-    <div className="home__events bg-dark-1">
+    <div className="home__events bg-dark-1 pt-md-0 pt-5">
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-8 d-flex align-items-center text-center flex-column">
+          <div className="col-md-8 d-flex align-items-center text-center flex-column">
             <div className="events__content d-flex align-items-center justify-content-center text-center flex-column">
               <p className="heading-xl mb-3">Events</p>
-              <p className="text-gray">
+              <p className="text-gray p-m-0 p-4">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley

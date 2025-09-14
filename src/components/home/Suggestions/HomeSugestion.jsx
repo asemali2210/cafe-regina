@@ -12,7 +12,7 @@ function HomeSugestion() {
     <div className="home__suggestions">
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-8 d-flex align-items-center text-center flex-column">
+          <div className="col-md-8 d-flex align-items-center text-center flex-column">
             <div className="suggestions__content d-flex align-items-center justify-content-center text-center flex-column">
               <p className="heading-xl mb-3">Weekend Suggestion</p>
               <p className="text-gray">

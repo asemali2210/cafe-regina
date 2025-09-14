@@ -13,7 +13,7 @@ function HomeGallery() {
   return (
     <div className="home__gallery bg-dark-1 pt-5">
       <DividerLogo />
-      <div className="py-5">
+      <div className="py-md-5 mb-md-0 mb-5">
         <div className="container mt-3">
           <div className="row">
             <div className="col-md-5">
@@ -28,7 +28,7 @@ function HomeGallery() {
                   what you can expect when you visit the café. So be sure to
                   check out these photos!
                 </p>
-                <div className="arrows_ctr d-flex gap-4 mt-4">
+                <div className="arrows_ctr d-flex  gap-4 mt-4 mb-m-0 mb-5">
                   <div
                     className="arrow-left"
                     onClick={() => swiperRef.current.nextSlide()}

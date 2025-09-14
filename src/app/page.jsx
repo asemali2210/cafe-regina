@@ -19,7 +19,6 @@ export default function Home() {
       <HomeEvents />
       <HomeGallery />
       <Newsletter />
-      <Footer />
     </>
   );
 }

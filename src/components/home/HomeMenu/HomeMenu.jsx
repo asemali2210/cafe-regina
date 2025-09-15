@@ -10,13 +10,13 @@ function HomeMenu() {
   return (
     <div className="home-menu">
       <div className="container">
-        <div className="row align-items-center mb-md-0 mb-5">
+        <div className="row align-items-center">
           <div className="col-md-4">
-            <div className="menu__main  text-center text-md-start">
-              <p className="h2 font-athina menu__title text-white font-harmond">
+            <div className="menu__main">
+              <p className="h2 font-athina menu__title text-white">
                 Extensive Drinks
               </p>
-              <p className="meun__description text-gray font-inter">
+              <p className="meun__description text-gray">
                 At Café Regina you will always find something you would like to
                 drink. We have a very extensive drinks menu, so there is
                 something for everyone. Call, email or simply drop by the café
@@ -34,7 +34,7 @@ function HomeMenu() {
             </div>
           </div>
           <div className="col-md-4">
-            <div className="menu__items d-flex d-md-block justify-content-center flex-column align-items-center text-center text-md-start">
+            <div className="menu__items">
               <ul className="list-unstyled font-athina text-white">
                 <li className="menu__item">Bottled Beers</li>
                 <li className="menu__item">Aperitifs / Digestifs</li>
@@ -46,13 +46,13 @@ function HomeMenu() {
           </div>
         </div>
 
-        <div className="row align-items-center mb-md-0 mb-5">
+        <div className="row align-items-center">
           <div className="col-md-4">
-            <div className="menu__main  text-center text-md-start">
-              <p className="h2 font-athina menu__title text-white font-harmond">
+            <div className="menu__main">
+              <p className="h2 font-athina menu__title text-white">
                 Small Hunger
               </p>
-              <p className="meun__description text-gray font-inter">
+              <p className="meun__description text-gray">
                 If you want to eat, you should also come to Café Regina! Fancy a
                 little bite? Try the farmer's board, filled with artisan
                 cheeses, cold cuts and crispy freshly baked bread. At the
@@ -71,7 +71,7 @@ function HomeMenu() {
             </div>
           </div>
           <div className="col-md-4">
-            <div className="menu__items d-flex d-md-block justify-content-center flex-column align-items-center text-center text-md-start">
+            <div className="menu__items">
               <ul className="list-unstyled font-athina text-white">
                 <li className="menu__item">Refreshments</li>
                 <li className="menu__item">Pancakes / Waffles</li>

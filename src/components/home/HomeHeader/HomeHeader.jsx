@@ -21,21 +21,54 @@ function HomeHeader() {
   const headerTextFadeOut = useRef();
   const headerImgSlideBottom = useRef();
   const headerImgSlideTop = useRef();
-  const titleRef = useRef();
+  const arrowRef = useRef();
+  const arrowBlock = useRef();
 
   useGSAP(
     () => {
-      // split into lines and words
-      const split = new SplitText(titleRef.current, {
-        type: "chars,words",
+      //
+      const split = new SplitText(arrowRef.current, {
+        type: "lines,words",
+        linesClass: "lines",
       });
       // Animate the first two title lines into view
       gsap.fromTo(headerText1.current, { y: "100%" }, { y: 0, duration: 3 });
+      gsap.fromTo(headerText2.current, { y: "100%" }, { y: 0, duration: 1.5 });
       gsap.fromTo(
-        split.words,
-        { y: "100%", opacity: 1 },
-        { y: 0, opacity: 1, duration: 1.5 }
+        homeHeader.current,
+        { backgroundSize: null },
+        {
+          filter: "contrast(1.03) brightness(1.04)",
+          ease: "none",
+          duration: 3,
+        }
       );
+      // Pinned scroll timeline: fade text + parallax images
+      const tlArrow = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        scrollTrigger: {
+          // Pin the whole header section while scrubbing
+          trigger: arrowBlock.current,
+          start: "+=1000",
+          scrub: 1.6,
+          toggleActions: "play none none reverse",
+          once: false,
+        },
+      });
+
+      if (split) {
+        tlArrow.to(
+          split.words,
+          {
+            xPercent: 0,
+            autoAlpha: 1,
+            filter: "blur(0px)",
+            duration: 0.8,
+            stagger: { each: 0.05, from: "start" },
+          },
+          0
+        );
+      }
       // Pinned scroll timeline: fade text + parallax images
       const tl = gsap.timeline({
         defaults: { ease: "none" },
@@ -50,26 +83,19 @@ function HomeHeader() {
           invalidateOnRefresh: true,
         },
       });
-      // start state
-      gsap.set(split.words, {
-        yPercent: 0,
-        autoAlpha: 0,
-        transformOrigin: "50% 100%",
-        opacity: 1,
-      });
+
       // Fade all header text and move side images for subtle parallax
-      tl.to(
-        split.words,
-        {
-          yPercent: -120,
-          autoAlpha: 1,
-          duration: 1,
-          stagger: { each: 0.05, from: "start" },
-        },
-        0
-      )
-        .to(headerImgSlideTop.current, { yPercent: 50 }, 0)
-        .to(headerImgSlideBottom.current, { yPercent: -50 }, 0);
+      tl.to(headerTextFadeOut.current, { opacity: 0 }, 0)
+        .to(
+          headerImgSlideTop.current,
+          { yPercent: -12, rotation: -2, scale: 1.06 },
+          0
+        )
+        .to(
+          headerImgSlideBottom.current,
+          { yPercent: -12, rotation: -2, scale: 1.06 },
+          0
+        );
     },
     { scope: homeHeader } // keeps selectors scoped & auto-cleans on unmount
   );
@@ -80,7 +106,11 @@ function HomeHeader() {
 
       <div className="container">
         <div className="row row-gap-xl-0 row-gap-5">
-          <div className="header__content font-harmond" style={{ zIndex: 99 }}>
+          <div
+            className="header__content font-harmond"
+            ref={headerTextFadeOut}
+            style={{ zIndex: 99 }}
+          >
             <div>
               <div className="text__container position-relative overflow-hidden">
                 <p className="header__content-text" ref={headerText1}>
@@ -88,7 +118,7 @@ function HomeHeader() {
                 </p>
               </div>
               <div className="text__container position-relative overflow-hidden">
-                <p className="header__content-text" ref={titleRef}>
+                <p className="header__content-text" ref={headerText2}>
                   Gezellige Tijd Bij
                 </p>
               </div>
@@ -145,14 +175,19 @@ function HomeHeader() {
               </div>
             </div>
           </div>
-          <div className="col-xl-3 col-md-6 order-xl-2 order-md-2 order-2 justify-content-center align-items-center d-flex flex-column ">
+          <div
+            className="col-xl-3 col-md-6 order-xl-2 order-md-2 order-2 justify-content-center align-items-center d-flex flex-column "
+            ref={arrowBlock}
+          >
             <div className="bottom__content">
               <p className="header__right-text font-inter">
                 Café Regina is not only the oldest, but also the nicest café in
                 Zelzate and the surrounding area. So be sure to come by and
                 enjoy a good time!
               </p>
-              <ArrowLink href="/contact" content="Contact" />
+              <div ref={arrowRef}>
+                <ArrowLink href="/contact" content="Contact" />
+              </div>
             </div>
           </div>
         </div>

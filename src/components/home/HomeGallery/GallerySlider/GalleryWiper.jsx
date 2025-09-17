@@ -2,24 +2,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Pagination } from "swiper/modules";
 
-import { forwardRef, useImperativeHandle } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import galletyPhoto1 from "../../../../../public/images/gallery-photo (1).png";
 import galletyPhoto2 from "../../../../../public/images/gallery-photo (2).png";
 import galletyPhoto3 from "../../../../../public/images/gallery-photo (3).png";
 import galletyPhoto4 from "../../../../../public/images/gallery-photo (4).png";
 import Image from "next/image";
 
-const GallerySwiper = forwardRef((prop, ref) => {
-  let swiperInstance = null;
+const GallerySwiper = forwardRef((_, ref) => {
+  const swiperInstanceRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
-    nextSlide: () => swiperInstance.slideNext(),
-    prevSlide: () => swiperInstance.slidePrev(),
+    nextSlide: () => swiperInstanceRef.current?.slideNext(),
+    prevSlide: () => swiperInstanceRef.current?.slidePrev(),
   }));
   return (
     <div>
       <Swiper
-        onSwiper={(swiper) => (swiperInstance = swiper)}
+        onSwiper={(swiper) => {
+          swiperInstanceRef.current = swiper;
+        }}
         slidesPerView={2}
         spaceBetween={30}
         modules={[Pagination]}
@@ -51,3 +53,4 @@ const GallerySwiper = forwardRef((prop, ref) => {
 });
 
 export default GallerySwiper;
+

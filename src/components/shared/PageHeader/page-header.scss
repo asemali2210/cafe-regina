@@ -8,14 +8,17 @@
   }
   ._title-2 {
     line-height: 1;
+    white-space: nowrap;
   }
   .header__despription {
     padding: 10px 100px;
     padding-left: 100px;
   }
   @media screen and (max-width: 768px) {
+    padding: 20px 0 50px;
+
     .header__despription {
-      padding: 10px 100px;
+      padding: 10px 30px;
       padding-left: 0;
     }
   }

@@ -23,10 +23,17 @@ function SuggestionsPage() {
       <section className="drinks-menu py-5">
         <div className="container">
           <div className="row mb-4">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h2 className="drinks-menu__heading font-athina text-white">Vlaamse Klassiekers</h2>
-              <p className="text-gray">
-                Er zijn heel wat verschillende suggesties waar u in het weekend van kan genieten bij deze zaak. Zo zijn er bijvoorbeeld de traditionele Vlaamse klassiekers die door de chef-kok op tafel getoverd worden. Zo kan u genieten van huisbereid stoofvlees, maar ook van varkenswangetjes met abdijbier. Een andere optie is dan weer konijn op grootmoeders wijze.
+            <div className="col-12 col-lg-10 mx-auto text-center mb-md-5">
+              <h2 className="drinks-menu__heading font-athina text-white">
+                Vlaamse Klassiekers
+              </h2>
+              <p className="text-gray font-inter">
+                Er zijn heel wat verschillende suggesties waar u in het weekend
+                van kan genieten bij deze zaak. Zo zijn er bijvoorbeeld de
+                traditionele Vlaamse klassiekers die door de chef-kok op tafel
+                getoverd worden. Zo kan u genieten van huisbereid stoofvlees,
+                maar ook van varkenswangetjes met abdijbier. Een andere optie is
+                dan weer konijn op grootmoeders wijze.
               </p>
             </div>
           </div>
@@ -38,13 +45,20 @@ function SuggestionsPage() {
                   {suggestionsItems.map((item) => (
                     <li key={item.title} className="drinks-menu__item">
                       <div className="drinks-menu__row">
-                        <span className="drinks-menu__title">{item.title}</span>
+                        <span className="drinks-menu__title font-harmond">
+                          {item.title}
+                        </span>
                         <span className="drinks-menu__dots" />
-                        <Link href="/contact" className="drinks-menu__price">
+                        <Link
+                          href="/contact"
+                          className="drinks-menu__price font-inter text-uppercase"
+                        >
                           view
                         </Link>
                       </div>
-                      <div className="drinks-menu__meta">{item.type}</div>
+                      <div className="drinks-menu__meta font-inter">
+                        {item.type}
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -61,4 +75,3 @@ function SuggestionsPage() {
 }
 
 export default SuggestionsPage;
-

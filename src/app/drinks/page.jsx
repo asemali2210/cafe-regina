@@ -36,14 +36,16 @@ function drinksPage() {
       <section className="drinks-menu py-5">
         <div className="container">
           <div className="row mb-4">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h2 className="drinks-menu__heading font-athina text-white">
+            <div className="col-12 col-lg-9 mx-auto text-center mb-md-5">
+              <h2 className="drinks-menu__heading font-harmond text-white">
                 Explore Our Drinks
               </h2>
-              <p className="text-gray">
-                From crafted mocktails and fresh juices to classic coffees, teas
-                and sparkling refreshers — browse the selection below and find
-                your new favorite.
+              <p className="text-gray font-inter ">
+                During the weekend at Café Regina you can treat yourself to a
+                delicious hot meal that is prepared with a lot of care and love.
+                Our chef gets to work and conjures up traditional Flemish
+                classics that will delight your taste buds. So be sure to drop
+                by or contact this business! 
               </p>
             </div>
           </div>
@@ -58,15 +60,17 @@ function drinksPage() {
                     {col.items.map((item) => (
                       <li key={item.title} className="drinks-menu__item">
                         <div className="drinks-menu__row">
-                          <span className="drinks-menu__title">
+                          <span className="drinks-menu__title font-harmond">
                             {item.title}
                           </span>
                           <span className="drinks-menu__dots" />
-                          <span className="drinks-menu__price">
+                          <span className="drinks-menu__price font-inter">
                             {formatPrice(item.price)}
                           </span>
                         </div>
-                        <div className="drinks-menu__meta">{item.type}</div>
+                        <div className="drinks-menu__meta font-inter">
+                          {item.type}
+                        </div>
                       </li>
                     ))}
                   </ul>

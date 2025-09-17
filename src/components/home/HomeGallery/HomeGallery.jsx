@@ -8,7 +8,7 @@ import "./home-gallery.scss";
 import DividerLogo from "./../../DividerLogo/DividerLogo";
 
 function HomeGallery() {
-  const swiperRef = useRef();
+  const swiperRef = useRef(null);
 
   return (
     <div className="home__gallery bg-dark-1 pt-5">
@@ -31,13 +31,13 @@ function HomeGallery() {
                 <div className="arrows_ctr d-flex  gap-4 mt-4 mb-m-0 mb-5">
                   <div
                     className="arrow-left"
-                    onClick={() => swiperRef.current.nextSlide()}
+                    onClick={() => swiperRef.current?.prevSlide()}
                   >
                     <Image src={arrowLeft} alt="arrow" />
                   </div>
                   <div
                     className="arrow-right"
-                    onClick={() => swiperRef.current.prevSlide()}
+                    onClick={() => swiperRef.current?.nextSlide()}
                   >
                     <Image src={arrowRight} alt="arrow" />
                   </div>
@@ -56,3 +56,4 @@ function HomeGallery() {
 }
 
 export default HomeGallery;
+

@@ -7,7 +7,7 @@ import arrowLeft from "../../../../public/images/arrow-to-left.svg";
 import arrowRight from "../../../../public/images/arrow-to-right.svg";
 import { useRef } from "react";
 function HomeEvents() {
-  const swiperRef = useRef();
+  const swiperRef = useRef(null);
   return (
     <div className="home__events bg-dark-1 pt-md-0 pt-5">
       <div className="container">
@@ -24,13 +24,13 @@ function HomeEvents() {
               <div className="arrows_ctr d-flex gap-4 mt-4">
                 <div
                   className="arrow-left"
-                  onClick={() => swiperRef.current.nextSlide()}
+                  onClick={() => swiperRef.current?.prevSlide()}
                 >
                   <Image src={arrowLeft} alt="arrow" width={150} height={150} />
                 </div>
                 <div
                   className="arrow-right"
-                  onClick={() => swiperRef.current.prevSlide()}
+                  onClick={() => swiperRef.current?.nextSlide()}
                 >
                   <Image
                     src={arrowRight}
@@ -54,3 +54,4 @@ function HomeEvents() {
 }
 
 export default HomeEvents;
+

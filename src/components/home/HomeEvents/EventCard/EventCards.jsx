@@ -7,7 +7,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "./event-cards.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { useImperativeHandle, forwardRef } from "react";
+import { useImperativeHandle, forwardRef, useRef } from "react";
 import { events } from "./../../../../data/siteData";
 
 export function EventCard({ date, title, body, id, img }) {
@@ -31,18 +31,20 @@ export function EventCard({ date, title, body, id, img }) {
     </div>
   );
 }
-const SwiperCards = forwardRef((props, ref) => {
-  let swiperInstance = null;
+const SwiperCards = forwardRef((_, ref) => {
+  const swiperInstanceRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
-    nextSlide: () => swiperInstance.slideNext(),
-    prevSlide: () => swiperInstance.slidePrev(),
+    nextSlide: () => swiperInstanceRef.current?.slideNext(),
+    prevSlide: () => swiperInstanceRef.current?.slidePrev(),
   }));
 
   return (
     <>
       <Swiper
-        onSwiper={(swiper) => (swiperInstance = swiper)}
+        onSwiper={(swiper) => {
+          swiperInstanceRef.current = swiper;
+        }}
         modules={[Navigation, Pagination]}
         slidesPerView={1}
         spaceBetween={30}
@@ -55,7 +57,10 @@ const SwiperCards = forwardRef((props, ref) => {
         }}
       >
         {events.map((event) => (
-          <SwiperSlide className="d-md-block d-flex justify-content-center">
+          <SwiperSlide
+            key={event.id}
+            className="d-md-block d-flex justify-content-center"
+          >
             <EventCard
               title={event.title}
               date={event.date}
@@ -71,3 +76,4 @@ const SwiperCards = forwardRef((props, ref) => {
 });
 
 export default SwiperCards;
+

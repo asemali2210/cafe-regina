@@ -20,7 +20,7 @@ function Footer() {
               <p className="text-gray font-inter">VAT BE 0768.703.620</p>
             </div>
           </div>
-          <div className="col-md-6 order-0 order-md-1">
+          <div className="col-md-6 order-0 order-md-0">
             <div className="footer__col text-center d-flex justify-content-center flex-column align-items-center">
               <p className="font-athina h2 text__logo">CAFE REGINA</p>
               <p className="font-inter text-white">

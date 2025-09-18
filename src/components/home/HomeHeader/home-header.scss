@@ -25,6 +25,25 @@
       }
     }
   }
+  .images__row {
+    height: 60vh;
+    div {
+      height: 100%;
+      img {
+        &.__center__img {
+          height: 60vh;
+          width: auto;
+          object-fit: contain;
+        }
+        &.__left__img,
+        &.__right__img {
+          height: 30vh;
+          width: auto;
+          object-fit: contain;
+        }
+      }
+    }
+  }
   .header__top-text {
     display: flex;
     width: 350px;
@@ -67,11 +86,10 @@
     }
   }
   @media screen and (max-width: 992px) {
-    padding: 30px 0;
-    padding-top: 150px;
     background-size: cover;
     min-height: auto;
     height: auto;
+
     .header__top-text {
       text-align: center;
       .__top {

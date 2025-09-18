@@ -87,11 +87,11 @@ function drinksPage() {
                     {col.items.map((item) => (
                       <li key={item.title} className="drinks-menu__item">
                         <div className="drinks-menu__row">
-                          <span className="drinks-menu__title">
+                          <span className="drinks-menu__title font-harmond">
                             {item.title}
                           </span>
                           <span className="drinks-menu__dots" />
-                          <span className="drinks-menu__price">
+                          <span className="drinks-menu__price font-inter">
                             {formatPrice(item.price)}
                           </span>
                         </div>

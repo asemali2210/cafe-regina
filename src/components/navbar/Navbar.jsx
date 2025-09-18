@@ -4,66 +4,37 @@ import "./navbar.scss";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logo from "@/public/images/logo.svg";
-import { FaBarsProgress } from "react-icons/fa6";
+import { CgMenuRight } from "react-icons/cg";
+import { IoNavigate } from "react-icons/io5";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { navItems } from "@/data/siteData";
-const containerDuration = 0.25;
-const containerVariants = {
-  open: {
-    height: "auto",
-    paddingTop: 10,
-    paddingBottom: 10,
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { RiTwitterXLine } from "react-icons/ri";
 
-    borderTop: "2px solid #ffffff28",
-    marginTop: " 15px",
-    transition: {
-      duration: containerDuration,
-      ease: "easeOut",
-      when: "beforeChildren",
-    },
-  },
-  closed: {
-    height: 0,
-    paddingTop: 0,
-    paddingBottom: 0,
-    marginTop: "0",
-
-    transition: {
-      duration: containerDuration,
-      ease: "easeInOut",
-      when: "afterChildren",
-    },
-  },
-};
-const listVariants = {
-  open: {
-    transition: { staggerChildren: 0.06 },
-  },
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
-  },
-};
-const itemVariants = {
-  closed: { y: "100%", opacity: 0, border: "none" },
-  open: {
-    y: 0,
-    opacity: 1,
-  },
-};
-
-export const MotionLi = ({ content, href, pathName, existPathName }) => {
+export const MotionLi = ({
+  content,
+  href,
+  pathName,
+  existPathName,
+  itemNum,
+}) => {
   return (
     <li className="overflow-hidden">
-      <motion.div
-        variants={itemVariants}
+      <div
         transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
         className={`navbar__item ${
           pathName === existPathName ? "--active" : ""
         }`}
       >
-        <Link href={href}>{content}</Link>
-      </motion.div>
+        <Link href={href}>
+          <span className="navbar__item__number">({itemNum})</span>
+          {content}
+          <span className="__nav__icon">
+            <IoNavigate />
+          </span>
+        </Link>
+      </div>
     </li>
   );
 };
@@ -92,7 +63,7 @@ function Navbar({ homepage }) {
               </Link>
             </div>
           </div>
-          <div className="col-9 d-lg-none d-flex justify-content-end">
+          <div className="col-9  d-flex justify-content-end">
             <button
               className="nav__toggler"
               onClick={toggleNav}
@@ -100,56 +71,102 @@ function Navbar({ homepage }) {
               aria-controls="mobile-menu"
               aria-label="Toggle navigation"
             >
-              <FaBarsProgress />
+              <CgMenuRight />
             </button>
-          </div>
-          <div className="col-12 col-lg-10">
-            {/* Desktop menu: always visible on md+ */}
-            <div className="navbar__items d-none d-lg-block">
-              <ul className="navbar__list-items list-unstyled font-inter">
-                {navItems.map((item) => (
-                  <li
-                    key={`desktop-${item.path}`}
-                    className={`navbar__item ${
-                      pathname === item.path ? "--active" : ""
-                    }`}
-                  >
-                    <Link href={item.href}>{item.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Mobile menu: keep mounted, animate state */}
-            <motion.div
-              id="mobile-menu"
-              className="navbar__items d-lg-none"
-              variants={containerVariants}
-              initial={false}
-              animate={openNav ? "open" : "closed"}
-              style={{ pointerEvents: openNav ? "auto" : "none" }}
-              aria-hidden={!openNav}
-            >
-              <motion.ul
-                className="navbar__list-items list-unstyled font-inter"
-                variants={listVariants}
-                initial={false}
-                animate={openNav ? "open" : "closed"}
-              >
-                {navItems.map((item) => (
-                  <MotionLi
-                    key={`mobile-${item.path}`}
-                    content={item.label}
-                    href={item.href}
-                    pathName={pathname}
-                    existPathName={item.path}
-                  />
-                ))}
-              </motion.ul>
-            </motion.div>
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {openNav ? (
+          <div className="navbar__menu">
+            <>
+              <motion.div
+                className="navbar__items"
+                aria-hidden={!openNav}
+                initial={{ x: "-100%" }}
+                animate={{ x: "0" }}
+                transition={{ duration: 0.7 }}
+                exit={{ x: "-100%" }}
+              >
+                <ul className="navbar__list-items list-unstyled font-inter">
+                  {navItems.map((item) => (
+                    <MotionLi
+                      key={`mobile-${item.path}`}
+                      content={item.label}
+                      href={item.href}
+                      pathName={pathname}
+                      existPathName={item.path}
+                      itemNum={navItems.indexOf(item) + 1}
+                    />
+                  ))}
+                </ul>
+              </motion.div>
+              <motion.div
+                className="navbar__menu__right d-flex align-items-center justify-content-center"
+                initial={{ x: "100%" }}
+                animate={{ x: "0" }}
+                transition={{ duration: 0.7 }}
+                exit={{ x: "100%" }}
+              >
+                <div className="row row-gap-5">
+                  <div className="col-12 d-flex justify-content-end">
+                    <button
+                      className="nav__toggler"
+                      onClick={toggleNav}
+                      aria-expanded={openNav}
+                      aria-controls="mobile-menu"
+                      aria-label="Toggle navigation"
+                    >
+                      <CgMenuRight />
+                    </button>
+                  </div>
+                  <div className="col-12 d-flex justify-content-center">
+                    <div className="navbar__logo">
+                      <Link href="/">
+                        <Image
+                          className="img-fluid"
+                          src={logo}
+                          width={150}
+                          height={100}
+                          alt="Café Regina logo"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="col-6 d-flex justify-content-center">
+                    <div className="nav__box__item">
+                      <p className="nav__box__item-title font-harmond">
+                        Opening Hours
+                      </p>
+                      <p>
+                        Monday–Friday: <br /> 08:00 am – 12:00 am
+                      </p>
+                      <p>
+                        Saturday–Sunday: <br /> 07:00 am – 11:00 pm
+                      </p>
+                    </div>
+                  </div>
+                  <div className="col-6 d-flex justify-content-center">
+                    <div className="nav__box__item">
+                      <p className="nav__box__item-title font-harmond">
+                        Contact Us
+                      </p>
+                      <p>
+                        Grote Markt 15 9060 Zelzate <br /> (East Flanders)
+                        Belgium{" "}
+                      </p>
+                      <p>+0468 06 80 91</p>
+                      <p>info@caferegina.be</p>
+                      <p>VAT BE 0768.703.620</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </>
+          </div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

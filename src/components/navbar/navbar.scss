@@ -5,33 +5,7 @@
   border-bottom: 2px solid #ffffff28;
   padding-bottom: 40px;
   margin-bottom: 40px;
-  .navbar__items {
-    .navbar__list-items {
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      justify-content: space-around;
-      .navbar__item {
-        a {
-          font-size: 1.1rem;
-          text-transform: uppercase;
-          transition: color 0.3s ease;
-        }
-        &:hover {
-          a {
-            color: $white;
-          }
-        }
 
-        &.--active {
-          a {
-            color: $white;
-          }
-        }
-      }
-    }
-  }
   .nav__toggler {
     background: none;
     border: none;
@@ -43,7 +17,92 @@
     border-bottom: none;
     width: 100%;
   }
-  @media screen and (max-width: 992px) {
+  .navbar__menu {
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    height: 100vh;
+
+    .navbar__items {
+      flex-basis: 50%;
+      background-color: $primary;
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      .navbar__list-items {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 50%;
+        padding: 0;
+        height: 100%;
+        li {
+          flex: 1 1 0;
+        }
+        .navbar__item {
+          border-bottom: 1px solid $gray-2;
+          padding: 1rem 0.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 100%;
+          flex: 1 1 0;
+          a {
+            height: 100%;
+            align-items: center;
+            display: flex;
+            column-gap: 40px;
+            font-family: "Harmond";
+            font-size: 2.9rem;
+            line-height: 1;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            flex: 1;
+            color: #2b4033;
+            padding-left: 30px;
+            span.navbar__item__number {
+              font-size: 1.5rem;
+            }
+            .__nav__icon {
+              font-size: 2rem;
+              flex: 1 1 0;
+              text-align: end;
+              margin: 0 30px;
+            }
+          }
+          &:hover {
+            a {
+              color: $white;
+            }
+          }
+
+          &.--active {
+            a {
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+
+    .navbar__menu__right {
+      flex-basis: 50%;
+      background-color: #4b352a;
+      .nav__box__item {
+        p.nav__box__item-title {
+          color: $white;
+          font-family: "Athina Regular";
+          font-size: 2rem;
+        }
+        p {
+          color: $primary;
+          font-family: "Harmond";
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  /* @media screen and (max-width: 992px) {
     background-color: #070707;
     position: relative;
     border-radius: 15px;
@@ -68,6 +127,7 @@
   }
   @media only screen and (min-width: 992px) and (max-width: 1440px) {
     .navbar__items {
+      background-color: red;
       .navbar__list-items {
         gap: 0;
         .navbar__item {
@@ -77,5 +137,5 @@
         }
       }
     }
-  }
+  } */
 }

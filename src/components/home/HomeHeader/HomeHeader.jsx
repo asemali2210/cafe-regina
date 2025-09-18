@@ -103,9 +103,8 @@ function HomeHeader() {
   return (
     <div className="home-header" ref={homeHeader}>
       <Navbar homepage />
-
       <div className="container">
-        <div className="row row-gap-xl-0 row-gap-5">
+        <div className="row row-gap-xl-0  row-gap-5">
           <div
             className="header__content font-harmond"
             ref={headerTextFadeOut}
@@ -144,13 +143,13 @@ function HomeHeader() {
             </div>
           </div>
           <div className="col-12">
-            <div className="row align-items-center">
-              <div className="col-3 align-self-end">
+            <div className="row align-items-center images__row">
+              <div className="col-3 d-flex flex-column justify-content-end align-items-center">
                 <Image
                   src={imageSlider2}
                   ref={headerImgSlideBottom}
                   alt="Café Regina header image (left)"
-                  className="img-fluid"
+                  className="img-fluid __left__img"
                   quality={100}
                 />
               </div>
@@ -159,17 +158,17 @@ function HomeHeader() {
                   <Image
                     src={imageSlider1}
                     alt="Café Regina header image (center)"
-                    className="img-fluid w-100"
+                    className="img-fluid w-100 __center__img"
                     quality={100}
                   />
                 </div>
               </div>
-              <div className="col-3 align-self-start">
+              <div className="col-3  d-flex flex-column  align-items-center">
                 <Image
                   src={imageSlider3}
                   ref={headerImgSlideTop}
                   alt="Café Regina header image (right)"
-                  className="img-fluid"
+                  className="img-fluid __right__img"
                   quality={100}
                 />
               </div>

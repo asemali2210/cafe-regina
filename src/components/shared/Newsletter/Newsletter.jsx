@@ -5,7 +5,7 @@ function Newsletter() {
     <div className="newsletter py-5">
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-md-6">
+          <div className="col-md-10 col-lg-8 col-xl-6">
             <div className="newsletter__header text-center">
               <p className="font-harmond text-white h2 mb-3">Stay informed</p>
               <p className="font-inter text-gray">
@@ -17,7 +17,7 @@ function Newsletter() {
               </p>
             </div>
           </div>
-          <div className="col-md-8">
+          <div className="col-md-10">
             <div className="newsletter__form p-5  mt-5  d-flex flex-column justify-content-center align-items-center">
               <div className="form__header text-center d-flex flex-column gap-2">
                 <p className="font-harmond text-white h2">Newsletter</p>

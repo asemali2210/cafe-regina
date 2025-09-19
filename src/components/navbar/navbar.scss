@@ -23,7 +23,12 @@
     z-index: 1000;
     display: flex;
     height: 100vh;
-
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgb(#00000067, 0.7);
+      z-index: -1;
+    }
     .navbar__items {
       flex-basis: 50%;
       background-color: $primary;
@@ -98,6 +103,28 @@
           color: $primary;
           font-family: "Harmond";
           font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .navbar__menu {
+      flex-direction: column;
+      .navbar__menu__right {
+        flex-basis: unset;
+        height: 50%;
+        .navbar__list-items {
+        }
+      }
+      .navbar__items {
+        flex-basis: unset;
+        height: 50%;
+        .navbar__list-items {
+          .navbar__item {
+            a {
+              font-size: 1.5rem;
+            }
+          }
         }
       }
     }

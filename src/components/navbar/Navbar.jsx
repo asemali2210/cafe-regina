@@ -45,7 +45,43 @@ function Navbar({ homepage }) {
   const toggleNav = () => {
     setOpenNav((v) => !v);
   };
-
+  const overlayDuration = 0.4;
+  const leftVariants = {
+    open: {
+      x: 0,
+      transition: {
+        duration: 0.45,
+        ease: "easeOut",
+        delay: overlayDuration,
+      },
+    },
+    closed: {
+      x: "-100%",
+      transition: { duration: 0.7, ease: "easeIn" },
+    },
+    exit: {
+      x: "-100%",
+      transition: { duration: 0.7, ease: "easeIn" },
+    },
+  };
+  const rightVariants = {
+    open: {
+      x: "0%",
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        delay: overlayDuration,
+      },
+    },
+    closed: {
+      x: "100%",
+      transition: { duration: 0.7, ease: "easeIn" },
+    },
+    exit: {
+      x: "100%",
+      transition: { duration: 0.7, ease: "easeIn" },
+    },
+  };
   return (
     <div className={`navbar-main  ${homepage && "--homepage"}`}>
       <div className="container">
@@ -79,15 +115,22 @@ function Navbar({ homepage }) {
 
       <AnimatePresence>
         {openNav ? (
-          <div className="navbar__menu">
+          <div className="navbar__menu overflow-hidden">
+            <motion.div
+              className="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: overlayDuration }}
+              exit={!openNav ? { opacity: 0 } : null}
+            ></motion.div>
             <>
               <motion.div
                 className="navbar__items"
                 aria-hidden={!openNav}
-                initial={{ x: "-100%" }}
-                animate={{ x: "0" }}
-                transition={{ duration: 0.7 }}
-                exit={{ x: "-100%" }}
+                animate={openNav ? "open" : "closed"}
+                initial="closed"
+                variants={leftVariants}
+                exit="exit"
               >
                 <ul className="navbar__list-items list-unstyled font-inter">
                   {navItems.map((item) => (
@@ -104,12 +147,12 @@ function Navbar({ homepage }) {
               </motion.div>
               <motion.div
                 className="navbar__menu__right d-flex align-items-center justify-content-center"
-                initial={{ x: "100%" }}
-                animate={{ x: "0" }}
-                transition={{ duration: 0.7 }}
-                exit={{ x: "100%" }}
+                initial="closed"
+                animate={openNav ? "open" : "closed"}
+                variants={rightVariants}
+                exit="exit"
               >
-                <div className="row row-gap-5">
+                <div className="row row-gap-md-5">
                   <div className="col-12 d-flex justify-content-end">
                     <button
                       className="nav__toggler"
@@ -121,7 +164,7 @@ function Navbar({ homepage }) {
                       <CgMenuRight />
                     </button>
                   </div>
-                  <div className="col-12 d-flex justify-content-center">
+                  <div className="col-12 d-md-flex justify-content-center d-none">
                     <div className="navbar__logo">
                       <Link href="/">
                         <Image

@@ -12,6 +12,140 @@ import { navItems } from "@/data/siteData";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 
+const itemVariants = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.45,
+      ease: "easeOut",
+      when: "beforeChildren",
+    },
+  },
+  closed: {
+    y: 100,
+    opacity: 0,
+    transition: { duration: 0.3, ease: "easeIn" },
+  },
+  hover: {},
+};
+
+const listVariants = {
+  open: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
+    },
+  },
+  closed: {
+    transition: {
+      staggerChildren: 0.08,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const itemContentVariants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: "easeOut" },
+  },
+  closed: {
+    opacity: 0,
+    y: 24,
+    transition: { duration: 0.25, ease: "easeIn" },
+  },
+  hover: {},
+};
+
+const lineVariants = {
+  open: {
+    width: "100%",
+    transition: { duration: 0.45, ease: "easeOut", delay: 0.15 },
+  },
+  closed: {
+    width: "0%",
+    transition: { duration: 0.2, ease: "easeIn" },
+  },
+};
+
+const linkContentVariants = {
+  closed: { x: 0 },
+  open: {
+    x: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+  hover: {
+    x: 50,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+const underlineBoldVariants = {
+  closed: {
+    y: 60,
+    height: 0,
+    width: "0%",
+    opacity: 0,
+  },
+  open: {
+    y: 60,
+    height: 0,
+    width: "0%",
+    opacity: 0,
+    transition: { duration: 0.2, ease: "easeOut", delay: 0.2 },
+  },
+  hover: {
+    y: 0,
+    height: "100%",
+    width: "100%",
+    opacity: 1,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+const overlayVariants = {
+  closed: {
+    height: 0,
+    opacity: 0,
+  },
+  open: {
+    height: 0,
+    opacity: 0,
+    transition: { duration: 0.2, ease: "easeOut" },
+  },
+  hover: {
+    height: "100%",
+    opacity: 0.55,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+const rightLogoVariants = {
+  closed: {
+    opacity: 0,
+    y: 20,
+  },
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
+};
+
+const navBoxItemVariants = {
+  closed: {
+    opacity: 0,
+    y: 30,
+  },
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
+};
+
 export const MotionLi = ({
   content,
   href,
@@ -20,22 +154,43 @@ export const MotionLi = ({
   itemNum,
 }) => {
   return (
-    <li className="overflow-hidden">
-      <div
-        transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+    <motion.li
+      className="overflow-hidden"
+      variants={itemVariants}
+      whileHover="hover"
+    >
+      <motion.div
         className={`navbar__item ${
           pathName === existPathName ? "--active" : ""
         }`}
+        variants={itemContentVariants}
       >
         <Link href={href}>
           <span className="navbar__item__number">({itemNum})</span>
-          {content}
+          <motion.span
+            className="link-content"
+            variants={linkContentVariants}
+          >
+            {content}
+          </motion.span>
           <span className="__nav__icon">
             <IoNavigate />
           </span>
         </Link>
-      </div>
-    </li>
+        <motion.span
+          className="underline-think"
+          variants={lineVariants}
+        ></motion.span>
+        <motion.span
+          className="underline-bold"
+          variants={underlineBoldVariants}
+        ></motion.span>
+        <motion.div
+          className="item__overlay"
+          variants={overlayVariants}
+        ></motion.div>
+      </motion.div>
+    </motion.li>
   );
 };
 
@@ -53,6 +208,8 @@ function Navbar({ homepage }) {
         duration: 0.45,
         ease: "easeOut",
         delay: overlayDuration,
+        when: "beforeChildren",
+        delayChildren: overlayDuration + 0.1,
       },
     },
     closed: {
@@ -64,6 +221,7 @@ function Navbar({ homepage }) {
       transition: { duration: 0.7, ease: "easeIn" },
     },
   };
+
   const rightVariants = {
     open: {
       x: "0%",
@@ -71,6 +229,9 @@ function Navbar({ homepage }) {
         duration: 0.5,
         ease: "easeOut",
         delay: overlayDuration,
+        when: "beforeChildren",
+        delayChildren: overlayDuration + 0.2,
+        staggerChildren: 0.12,
       },
     },
     closed: {
@@ -82,6 +243,7 @@ function Navbar({ homepage }) {
       transition: { duration: 0.7, ease: "easeIn" },
     },
   };
+
   return (
     <div className={`navbar-main  ${homepage && "--homepage"}`}>
       <div className="container">
@@ -94,7 +256,7 @@ function Navbar({ homepage }) {
                   src={logo}
                   width={100}
                   height={100}
-                  alt="CafÃ© Regina logo"
+                  alt="Café Regina logo"
                 />
               </Link>
             </div>
@@ -132,7 +294,10 @@ function Navbar({ homepage }) {
                 variants={leftVariants}
                 exit="exit"
               >
-                <ul className="navbar__list-items list-unstyled font-inter">
+                <motion.ul
+                  className="navbar__list-items list-unstyled font-inter"
+                  variants={listVariants}
+                >
                   {navItems.map((item) => (
                     <MotionLi
                       key={`mobile-${item.path}`}
@@ -143,7 +308,7 @@ function Navbar({ homepage }) {
                       itemNum={navItems.indexOf(item) + 1}
                     />
                   ))}
-                </ul>
+                </motion.ul>
               </motion.div>
               <motion.div
                 className="navbar__menu__right d-flex align-items-center justify-content-center"
@@ -165,33 +330,42 @@ function Navbar({ homepage }) {
                     </button>
                   </div>
                   <div className="col-12 d-md-flex justify-content-center d-none">
-                    <div className="navbar__logo">
+                    <motion.div
+                      className="navbar__logo"
+                      variants={rightLogoVariants}
+                    >
                       <Link href="/">
                         <Image
                           className="img-fluid"
                           src={logo}
                           width={150}
                           height={100}
-                          alt="CafÃ© Regina logo"
+                          alt="Café Regina logo"
                         />
                       </Link>
-                    </div>
+                    </motion.div>
                   </div>
                   <div className="col-6 d-flex justify-content-center">
-                    <div className="nav__box__item">
+                    <motion.div
+                      className="nav__box__item"
+                      variants={navBoxItemVariants}
+                    >
                       <p className="nav__box__item-title font-harmond">
                         Opening Hours
                       </p>
                       <p>
-                        Mondayâ€“Friday: <br /> 08:00 am â€“ 12:00 am
+                        Monday–Friday: <br /> 08:00 am – 12:00 am
                       </p>
                       <p>
-                        Saturdayâ€“Sunday: <br /> 07:00 am â€“ 11:00 pm
+                        Saturday–Sunday: <br /> 07:00 am – 11:00 pm
                       </p>
-                    </div>
+                    </motion.div>
                   </div>
                   <div className="col-6 d-flex justify-content-center">
-                    <div className="nav__box__item">
+                    <motion.div
+                      className="nav__box__item"
+                      variants={navBoxItemVariants}
+                    >
                       <p className="nav__box__item-title font-harmond">
                         Contact Us
                       </p>
@@ -202,7 +376,7 @@ function Navbar({ homepage }) {
                       <p>+0468 06 80 91</p>
                       <p>info@caferegina.be</p>
                       <p>VAT BE 0768.703.620</p>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>

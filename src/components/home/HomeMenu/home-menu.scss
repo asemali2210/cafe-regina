@@ -6,20 +6,34 @@
   background-size: cover;
   background-position: bottom left;
   padding: 100px 0;
+
   .menu__main {
     .menu__title {
       font-size: 3rem;
       color: $white;
     }
+
+    .menu__title-word {
+      display: inline-block;
+      opacity: 0;
+    }
+
+    .menu__description {
+      margin-top: 1rem;
+    }
   }
+
   .menu__image {
     display: flex;
     align-items: center;
     justify-content: center;
+    mix-blend-mode: lighten;
+
     ._img {
       mix-blend-mode: lighten;
     }
   }
+
   .menu__items {
     li.menu__item {
       font-size: 2rem;

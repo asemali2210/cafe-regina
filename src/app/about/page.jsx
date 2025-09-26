@@ -2,12 +2,12 @@
 
 import "@/style/pages/about.scss";
 import DividerLogo from "@/components/DividerLogo/DividerLogo";
-import Newsletter from "@/components/shared/newsletter/Newsletter";
 import PageHeader from "@/components/shared/PageHeader/PageHeader";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";
 import { useState, useRef, useEffect } from "react";
 import { descriptionsData } from "@/data/siteData";
+import Newsletter from "./../../components/shared/newsletter/Newsletter";
 export default function About() {
   const containerRef = useRef(null);
   const [selectedTab, setSelectedTab] = useState(1);

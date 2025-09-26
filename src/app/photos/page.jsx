@@ -1,4 +1,5 @@
-import Newsletter from "@/components/shared/newsletter/Newsletter";
+import Newsletter from "./../../components/shared/newsletter/Newsletter";
+
 import PageHeader from "@/components/shared/PageHeader/PageHeader";
 import PhotosGallery from "@/components/gallery/PhotosGallery/PhotosGallery";
 
@@ -21,5 +22,3 @@ function PhotosPage() {
 }
 
 export default PhotosPage;
-
-

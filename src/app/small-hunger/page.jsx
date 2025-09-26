@@ -1,8 +1,8 @@
 import DividerLogo from "@/components/DividerLogo/DividerLogo";
-import Newsletter from "@/components/shared/newsletter/Newsletter";
 import PageHeader from "@/components/shared/PageHeader/PageHeader";
 import "@/style/pages/drinks.scss";
 import { smallHungerColumns } from "@/data/siteData";
+import Newsletter from "./../../components/shared/newsletter/Newsletter";
 
 function SmallHungerPage() {
   // Format euro prices before rendering the menu.
@@ -80,6 +80,3 @@ function SmallHungerPage() {
 }
 
 export default SmallHungerPage;
-
-
-

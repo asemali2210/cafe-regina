@@ -3,6 +3,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import { IoLogoGithub } from "react-icons/io5";
 
 function Footer() {
   return (
@@ -50,6 +51,17 @@ function Footer() {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="col-12 d-flex justify-content-center align-items-center text-white font-inter gap-2 _developer">
+        Crafted with ❤️ by
+        <div className="d-flex align-items-center">
+          <span className="_icon">
+            <IoLogoGithub className="mx-2" />
+          </span>
+          <Link href="https://github.com/asemali2210" className="text-white">
+            Asem Ali
+          </Link>
         </div>
       </div>
     </footer>

@@ -9,9 +9,11 @@ import galletyPhoto3 from "../../../../../public/images/gallery-photo (3).png";
 import galletyPhoto4 from "../../../../../public/images/gallery-photo (4).png";
 import Image from "next/image";
 
+// Gallery swiper reused on the homepage and photos page.
 const GallerySwiper = forwardRef((_, ref) => {
   const swiperInstanceRef = useRef(null);
 
+  // Allow the parent arrows to drive this swiper instance.
   useImperativeHandle(ref, () => ({
     nextSlide: () => swiperInstanceRef.current?.slideNext(),
     prevSlide: () => swiperInstanceRef.current?.slidePrev(),
@@ -51,6 +53,7 @@ const GallerySwiper = forwardRef((_, ref) => {
     </div>
   );
 });
+GallerySwiper.displayName = "GallerySwiper";
 
 export default GallerySwiper;
 

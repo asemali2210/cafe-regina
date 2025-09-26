@@ -2,8 +2,7 @@ import HomeEvents from "./../components/home/HomeEvents/HomeEvents";
 import HomeMenu from "./../components/home/HomeMenu/HomeMenu";
 import HomeHeader from "./../components/home/HomeHeader/HomeHeader";
 import HomeGallery from "./../components/home/HomeGallery/HomeGallery";
-import Newsletter from "./../components/shared/Newsletter/Newsletter";
-import Footer from "./../components/Footer/Footer";
+import Newsletter from "./../components/shared/newsletter/Newsletter";
 
 export const metadata = {
   title: "Home",

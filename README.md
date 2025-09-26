@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cafe Regina
 
-## Getting Started
+## Project Overview
+Cafe Regina is a marketing site for a Belgian cafe built with Next.js to highlight menus, events, and atmosphere. Visitors can browse dynamic pages such as weekend suggestions or small hunger menus and subscribe to the newsletter for updates.
 
-First, run the development server:
+### Key Features
+- Dynamic routes for drinks, suggestions, photos, and events.
+- Shared components for navigation, page headers, loaders, and CTAs.
+- Newsletter module enhanced with GSAP animations and reusable form UI.
 
+## Tech Stack
+- Next.js 15
+- React 19
+- SCSS modules and Bootstrap 5
+- GSAP with @gsap/react and SplitText
+- Swiper for carousel experiences
+
+## Installation & Setup
 ```bash
+git clone <repo-url>
+cd cafe-regina
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The project currently uses static data. If you add environment variables (for example `NEXT_PUBLIC_*` keys or API tokens), create a `.env.local` file and mirror those entries in your hosting environment such as Vercel.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Project Structure
+- `app/` - App Router pages, layouts, and metadata.
+- `components/` - Reusable UI blocks (navbar, newsletter, gallery widgets, loaders).
+- `data/` - Static content for menus, events, and suggestions.
+- `public/` - Images, SVGs, and fonts referenced in the UI.
+- `style/` - Global and page-level SCSS styles.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Available Scripts
+- `npm run dev` - Start the development server with Turbopack.
+- `npm run build` - Generate the production build.
+- `npm run start` - Serve the production build locally.
+- `npm run lint` - Run ESLint against the source.
 
-## Learn More
+## Testing
+Automated tests are not included yet. Add your preferred testing setup (for example Jest or React Testing Library) and document new scripts here when available.
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/name`.
+3. Commit and push your changes.
+4. Open a pull request for review.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+Proprietary - contact the owner for reuse or redistribution.

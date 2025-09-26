@@ -2,7 +2,7 @@
 
 import "@/style/pages/about.scss";
 import DividerLogo from "@/components/DividerLogo/DividerLogo";
-import Newsletter from "@/components/shared/Newsletter/Newsletter";
+import Newsletter from "@/components/shared/newsletter/Newsletter";
 import PageHeader from "@/components/shared/PageHeader/PageHeader";
 import { AnimatePresence } from "motion/react";
 import * as motion from "motion/react-client";

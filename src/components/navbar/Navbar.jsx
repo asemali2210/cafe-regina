@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import "./navbar.scss";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import { usePathname } from "next/navigation";
 import logo from "@/public/images/logo.svg";
 import { CgMenuRight } from "react-icons/cg";
 import { IoNavigate } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navItems } from "@/data/siteData";
 import {
@@ -37,9 +38,15 @@ const NavToggleButton = ({ isExpanded, onClick }) => (
 );
 
 // Single navigation item that animates into view.
-export const MotionLi = ({ content, href, isActive, itemNum, sequenceIndex }) => {
+export const MotionLi = ({
+  content,
+  href,
+  isActive,
+  itemNum,
+  sequenceIndex,
+}) => {
   // Stagger each link so they appear one after another.
-  const delay = overlayDuration + sequenceIndex * 0.1;
+  const delay = overlayDuration + 0.2 + sequenceIndex * 0.1;
 
   return (
     <li className="overflow-hidden">
@@ -65,9 +72,18 @@ export const MotionLi = ({ content, href, isActive, itemNum, sequenceIndex }) =>
             <IoNavigate />
           </span>
         </Link>
-        <motion.span className="underline-think" variants={lineVariants}></motion.span>
-        <motion.span className="underline-bold d-inline-block" variants={underlineBoldVariants}></motion.span>
-        <motion.div className="item__overlay" variants={overlayVariants}></motion.div>
+        <motion.span
+          className="underline-think"
+          variants={lineVariants}
+        ></motion.span>
+        <motion.span
+          className="underline-bold d-inline-block"
+          variants={underlineBoldVariants}
+        ></motion.span>
+        <motion.div
+          className="item__overlay"
+          variants={overlayVariants}
+        ></motion.div>
       </motion.div>
     </li>
   );
@@ -77,6 +93,26 @@ export const MotionLi = ({ content, href, isActive, itemNum, sequenceIndex }) =>
 function Navbar({ homepage }) {
   // Track if the mobile menu is open.
   const [openNav, setOpenNav] = useState(false);
+  const bodyOverflowRef = useRef("");
+
+  useEffect(() => {
+    const body = document.body;
+    if (!body) {
+      return undefined;
+    }
+
+    if (openNav) {
+      // Freeze page scroll while the mobile drawer is visible.
+      bodyOverflowRef.current = body.style.overflow;
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = bodyOverflowRef.current || "";
+    }
+
+    return () => {
+      body.style.overflow = bodyOverflowRef.current || "";
+    };
+  }, [openNav]);
   // Current route path from Next.js.
   const pathname = usePathname();
   // Add homepage styling when the navbar sits on the landing page.
@@ -132,7 +168,8 @@ function Navbar({ homepage }) {
               variants={leftVariants}
               exit="exit"
             >
-              <motion.ul id="mobile-menu"
+              <motion.ul
+                id="mobile-menu"
                 className="navbar__list-items list-unstyled font-inter"
                 variants={listVariants}
               >
@@ -162,7 +199,10 @@ function Navbar({ homepage }) {
                   <NavToggleButton onClick={toggleNav} isExpanded={openNav} />
                 </div>
                 <div className="col-12 d-md-flex justify-content-center d-none">
-                  <motion.div className="navbar__logo" variants={rightLogoVariants}>
+                  <motion.div
+                    className="navbar__logo"
+                    variants={rightLogoVariants}
+                  >
                     <Link href="/">
                       <Image
                         className="img-fluid"
@@ -175,8 +215,13 @@ function Navbar({ homepage }) {
                   </motion.div>
                 </div>
                 <div className="col-6 d-flex justify-content-center">
-                  <motion.div className="nav__box__item" variants={navBoxItemVariants}>
-                    <p className="nav__box__item-title font-harmond">Opening Hours</p>
+                  <motion.div
+                    className="nav__box__item"
+                    variants={navBoxItemVariants}
+                  >
+                    <p className="nav__box__item-title font-harmond">
+                      Opening Hours
+                    </p>
                     <p>
                       Monday-Friday: <br /> 08:00 am - 12:00 am
                     </p>
@@ -186,8 +231,13 @@ function Navbar({ homepage }) {
                   </motion.div>
                 </div>
                 <div className="col-6 d-flex justify-content-center">
-                  <motion.div className="nav__box__item" variants={navBoxItemVariants}>
-                    <p className="nav__box__item-title font-harmond">Contact Us</p>
+                  <motion.div
+                    className="nav__box__item"
+                    variants={navBoxItemVariants}
+                  >
+                    <p className="nav__box__item-title font-harmond">
+                      Contact Us
+                    </p>
                     <p>
                       Grote Markt 15 9060 Zelzate <br /> (East Flanders) Belgium{" "}
                     </p>

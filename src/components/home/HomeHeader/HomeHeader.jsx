@@ -12,12 +12,13 @@ import { useRef } from "react";
 import ArrowLink from "./../../LinkArrow/ArrowLink";
 import { SplitText } from "gsap/SplitText";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP, SplitText);
 
 function HomeHeader() {
   const homeHeader = useRef();
   const headerText1 = useRef();
   const headerText2 = useRef();
+  const headerText3 = useRef();
   const headerTextFadeOut = useRef();
   const headerImgSlideBottom = useRef();
   const headerImgSlideTop = useRef();
@@ -26,14 +27,18 @@ function HomeHeader() {
 
   useGSAP(
     () => {
-      //
-      const split = new SplitText(arrowRef.current, {
-        type: "lines,words",
-        linesClass: "lines",
-      });
-      // Animate the first two title lines into view
+      // Break CTA into words for staggered entrance.
+      const split = arrowRef.current
+        ? new SplitText(arrowRef.current, {
+            type: "lines,words",
+            linesClass: "lines",
+          })
+        : null;
+
+      // Animate the headline lines into view.
       gsap.fromTo(headerText1.current, { y: "100%" }, { y: 0, duration: 3 });
       gsap.fromTo(headerText2.current, { y: "100%" }, { y: 0, duration: 1.5 });
+      gsap.fromTo(headerText3.current, { y: "100%" }, { y: 0, duration: 1.5 });
       gsap.fromTo(
         homeHeader.current,
         { backgroundSize: null },
@@ -43,16 +48,14 @@ function HomeHeader() {
           duration: 3,
         }
       );
-      // Pinned scroll timeline: fade text + parallax images
+
+      // Pinned scroll timeline: fade text + parallax images.
       const tlArrow = gsap.timeline({
         defaults: { ease: "power3.out" },
         scrollTrigger: {
-          // Pin the whole header section while scrubbing
           trigger: arrowBlock.current,
-          start: "+=1000",
-          scrub: 1.6,
+          start: "top 80%",
           toggleActions: "play none none reverse",
-          once: false,
         },
       });
 
@@ -69,23 +72,24 @@ function HomeHeader() {
           0
         );
       }
-      // Pinned scroll timeline: fade text + parallax images
+
+      // Pinned scroll timeline: fade text + parallax images.
       const tl = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
-          // Pin the whole header section while scrubbing
           trigger: homeHeader.current,
-          start: "top top",
-          end: "+=900",
-          scrub: 1.6,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
+          start: "top 10%",
+          end: "+=1000",
+          toggleActions: "play none none reverse",
         },
       });
 
-      // Fade all header text and move side images for subtle parallax
-      tl.to(headerTextFadeOut.current, { opacity: 0 }, 0)
+      // Fade the headline block while the side images drift for parallax.
+      tl.fromTo(
+        headerTextFadeOut.current,
+        { opacity: 1 },
+        { opacity: 0, delay: 0.5 }
+      )
         .to(
           headerImgSlideTop.current,
           { yPercent: -12, rotation: -2, scale: 1.06 },
@@ -96,6 +100,10 @@ function HomeHeader() {
           { yPercent: -12, rotation: -2, scale: 1.06 },
           0
         );
+
+      return () => {
+        split?.revert();
+      };
     },
     { scope: homeHeader } // keeps selectors scoped & auto-cleans on unmount
   );
@@ -122,7 +130,9 @@ function HomeHeader() {
                 </p>
               </div>
               <div className="text__container position-relative overflow-hidden">
-                <p className="header__content-text">Café Regina</p>
+                <p className="header__content-text" ref={headerText3}>
+                  Café Regina
+                </p>
               </div>
             </div>
           </div>

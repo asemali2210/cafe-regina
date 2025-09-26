@@ -1,11 +1,11 @@
 import DividerLogo from "@/components/DividerLogo/DividerLogo";
-import Newsletter from "@/components/shared/Newsletter/Newsletter";
+import Newsletter from "@/components/shared/newsletter/Newsletter";
 import PageHeader from "@/components/shared/PageHeader/PageHeader";
-import React from "react";
 import "@/style/pages/drinks.scss";
 import { smallHungerColumns } from "@/data/siteData";
 
 function SmallHungerPage() {
+  // Format euro prices before rendering the menu.
   const formatPrice = (n) =>
     new Intl.NumberFormat("nl-BE", {
       style: "currency",
@@ -80,3 +80,6 @@ function SmallHungerPage() {
 }
 
 export default SmallHungerPage;
+
+
+

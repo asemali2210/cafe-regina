@@ -1,8 +1,4 @@
 "use client";
-/**
- * HomeMenu refactor: extracted modular sections and GSAP entrance animations.
- * Extend by adding to MENU_SECTIONS or tweaking the animation settings near useGSAP.
- */
 
 import {
   createRef,
@@ -16,7 +12,7 @@ import "./home-menu.scss";
 import menuDrink from "../../../../public/images/menu-drink.png";
 import menuHunger from "../../../../public/images/menu-hunger.png";
 import DividerLogo from "../../DividerLogo/DividerLogo";
-import HomeSugestion from "../Suggestions/HomeSugestion";
+import SuggestionSection from "../Suggestions/SuggestionSection";
 import ArrowLink from "../../LinkArrow/ArrowLink";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,30 +21,6 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
-/**
- * @typedef {Object} MenuSectionContent
- * @property {string} id
- * @property {string} title
- * @property {string} description
- * @property {import("next/image").StaticImageData} image
- * @property {string} imageAlt
- * @property {string[]} items
- * @property {string} linkHref
- * @property {string} linkLabel
- */
-
-/**
- * @typedef {Object} MenuSectionHandle
- * @property {HTMLDivElement | null} root
- * @property {HTMLParagraphElement | null} title
- * @property {HTMLDivElement | null} imageWrapper
- */
-
-/**
- * Renders a single menu trio (copy, image, list) and exposes DOM nodes for GSAP.
- * @param {{ content: MenuSectionContent }} props
- * @param {import("react").ForwardedRef<MenuSectionHandle>} ref
- */
 const MenuSection = forwardRef(({ content }, ref) => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -101,7 +73,6 @@ const MenuSection = forwardRef(({ content }, ref) => {
 
 MenuSection.displayName = "MenuSection";
 
-/** @type {MenuSectionContent[]} */
 const MENU_SECTIONS = [
   {
     id: "drinks",
@@ -132,13 +103,8 @@ const MENU_SECTIONS = [
   },
 ];
 
-/**
- * Displays the home menu overview and orchestrates GSAP entrance/scroll animations.
- * @returns {import("react").JSX.Element}
- */
 function HomeMenu() {
   const containerRef = useRef(null);
-  /** @type {Array<import("react").RefObject<MenuSectionHandle>>} */
   const sectionRefs = useMemo(() => MENU_SECTIONS.map(() => createRef()), []);
 
   useGSAP(
@@ -162,7 +128,7 @@ function HomeMenu() {
           return;
         }
 
-        // Words float up once per section to emphasise menu titles as they enter the viewport.
+        // Words float up on enter and roll back on exit so the cue replays whenever the section re-enters view.
         gsap.fromTo(
           words,
           { yPercent: 120, autoAlpha: 0 },
@@ -174,7 +140,9 @@ function HomeMenu() {
             stagger: 0.06,
             scrollTrigger: {
               trigger: refs.root,
-              start: "top 80%",
+              start: "top 50%",
+              end: "bottom 65%",
+              toggleActions: "play reverse play reverse",
             },
           }
         );
@@ -186,6 +154,8 @@ function HomeMenu() {
             start: "top 85%",
             end: "bottom 60%",
             scrub: true,
+
+            toggleActions: "play reverse play reverse",
           },
         });
 
@@ -193,11 +163,11 @@ function HomeMenu() {
           refs.imageWrapper,
           {
             yPercent: 20,
-            scale: 0.5,
+            scale: 0.3,
             autoAlpha: 0,
             rotate: 10,
           },
-          { yPercent: 0, scale: 1.1, autoAlpha: 1, rotate: 0 }
+          { yPercent: 0, scale: 1, autoAlpha: 1, rotate: 0 }
         );
 
         // Subtle follow-through so the menu artwork leans with the scroll.
@@ -208,7 +178,7 @@ function HomeMenu() {
   );
 
   return (
-    <div className="home-menu" ref={containerRef}>
+    <div className="home-menu overflow-hidden" ref={containerRef}>
       <div className="container">
         {MENU_SECTIONS.map((section, index) => (
           <MenuSection
@@ -219,7 +189,7 @@ function HomeMenu() {
         ))}
       </div>
       <DividerLogo />
-      <HomeSugestion />
+      <SuggestionSection />
     </div>
   );
 }

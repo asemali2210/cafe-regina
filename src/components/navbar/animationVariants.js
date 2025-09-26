@@ -1,5 +1,4 @@
 // Motion settings shared by the navbar.
-import { delay } from "motion";
 
 // Time the overlay takes to fade in and out.
 export const overlayDuration = 0.4;
@@ -172,3 +171,4 @@ export const navBoxItemVariants = {
     transition: { duration: 0.45, ease: "easeOut" },
   },
 };
+

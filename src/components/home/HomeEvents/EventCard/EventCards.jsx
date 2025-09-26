@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useImperativeHandle, forwardRef, useRef } from "react";
 import { events } from "./../../../../data/siteData";
 
+// Static card used by the slider.
 export function EventCard({ date, title, body, id, img }) {
   return (
     <div className="event__card d-md-block d-flex justify-content-center text-md-start text-center">
@@ -31,9 +32,11 @@ export function EventCard({ date, title, body, id, img }) {
     </div>
   );
 }
+// Shared event slider with imperative controls for the outer arrows.
 const SwiperCards = forwardRef((_, ref) => {
   const swiperInstanceRef = useRef(null);
 
+  // Expose next/prev so the outer arrows can control the swiper.
   useImperativeHandle(ref, () => ({
     nextSlide: () => swiperInstanceRef.current?.slideNext(),
     prevSlide: () => swiperInstanceRef.current?.slidePrev(),
@@ -74,6 +77,7 @@ const SwiperCards = forwardRef((_, ref) => {
     </>
   );
 });
+SwiperCards.displayName = "SwiperCards";
 
 export default SwiperCards;
 

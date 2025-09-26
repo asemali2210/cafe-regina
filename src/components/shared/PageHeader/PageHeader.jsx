@@ -1,7 +1,7 @@
 import ArrowLink from "@/components/LinkArrow/ArrowLink";
-import React from "react";
 import "./page-header.scss";
 import Navbar from "@/components/navbar/Navbar";
+// Shared hero header reused across interior pages.
 function PageHeader({ title1, title2, descirptions, linkHref, linkContent }) {
   return (
     <header className="about__header">
@@ -25,3 +25,5 @@ function PageHeader({ title1, title2, descirptions, linkHref, linkContent }) {
 }
 
 export default PageHeader;
+
+

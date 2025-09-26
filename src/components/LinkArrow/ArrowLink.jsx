@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import arrowLinkIcon from "../../../public/images/arrowLink.png";
-export default function ArrowLink({ href, content, moreClass }) {
+// Styled CTA link that appends the brand arrow graphic.
+export default function ArrowLink({ href, content, moreClass = null }) {
   return (
     <Link
       href={href}
@@ -17,3 +17,4 @@ export default function ArrowLink({ href, content, moreClass }) {
     </Link>
   );
 }
+

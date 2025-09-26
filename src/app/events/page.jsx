@@ -2,7 +2,6 @@ import Navbar from "@/components/navbar/Navbar";
 import ArrowLink from "@/components/LinkArrow/ArrowLink";
 import { events } from "@/data/siteData";
 import Image from "next/image";
-import React from "react";
 import "@/style/pages/events.scss";
 
 function EventsPage() {
@@ -40,3 +39,4 @@ function EventsPage() {
 }
 
 export default EventsPage;
+

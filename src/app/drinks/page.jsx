@@ -1,9 +1,8 @@
-import Newsletter from "@/components/shared/Newsletter/Newsletter";
 import PageHeader from "@/components/shared/PageHeader/PageHeader";
-import React from "react";
 import "@/style/pages/drinks.scss";
 import { menuColumns } from "@/data/siteData";
 import DividerLogo from "@/components/DividerLogo/DividerLogo";
+import Newsletter from "./../../components/shared/newsletter/Newsletter";
 
 export const metadata = {
   title: "Drinks Menu",
@@ -12,9 +11,11 @@ export const metadata = {
 };
 
 function drinksPage() {
+  // Split the menu collection into two columns for the layout.
   const mid = Math.ceil(menuColumns.length / 2);
   const leftCols = menuColumns.slice(0, mid);
   const rightCols = menuColumns.slice(mid);
+  // Format euro prices with the Belgian locale for consistency.
   const formatPrice = (n) =>
     new Intl.NumberFormat("nl-BE", {
       style: "currency",

@@ -1,6 +1,74 @@
+"use client";
+import { useRef } from "react";
 import "./news-letter.scss";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 function Newsletter() {
+  const textRef = useRef(null);
+  const containerRef = useRef();
+  // Animate the heading copy differently on mobile and desktop breakpoints.
+  useGSAP(
+    () => {
+      let splitedText = new SplitText(textRef.current, {
+        type: "words, lines",
+        linesClass: "line++",
+      });
+      const mm = gsap.matchMedia();
+
+      mm.add("(max-width: 767px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 60%",
+            end: "bottom 1%",
+          },
+        });
+        tl.fromTo(
+          splitedText.words,
+          { y: 120 },
+          { y: 0, duration: 0.4, ease: "power3.inOut", stagger: 0.07, delay: 0.3 }
+        );
+        return () => {
+          tl.scrollTrigger?.kill();
+          tl.kill();
+        };
+      });
+
+      mm.add("(min-width: 768px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 60%",
+            end: "-=400",
+          },
+        });
+
+        tl.fromTo(
+          splitedText.words,
+          { y: 120, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: "power3.inOut",
+            stagger: 0.07, delay: 0.3,
+          }
+        );
+        // Clean up the desktop timeline when the effect re-runs.
+        return () => {
+          tl.scrollTrigger?.kill();
+          tl.kill();
+          splitedText.revert();
+        };
+      });
+    },
+    { scope: containerRef }
+  );
   return (
     <div className="newsletter py-5">
       <div className="container">
@@ -11,19 +79,23 @@ function Newsletter() {
               <p className="font-inter text-gray">
                 Stay up to date with everything that happens at Café Regina!
                 This business believes it is important to keep its valued guests
-                informed of news, events and special offers. You can always find
-                all the latest news in the newsletter, so be sure to take a
-                look.
+                informed of news, events and You can always find all the latest
+                news in the newsletter, so be sure to take a look.
               </p>
             </div>
           </div>
           <div className="col-md-10">
             <div className="newsletter__form p-5  mt-5  d-flex flex-column justify-content-center align-items-center">
-              <div className="form__header text-center d-flex flex-column gap-2">
+              <div
+                className="form__header text-center d-flex flex-column gap-2 "
+                ref={containerRef}
+              >
                 <p className="font-harmond text-white h2">Newsletter</p>
-                <p className="font-harmond _heading">
-                  Subscribe to Our Newsletter
-                </p>
+                <div className="overflow-hidden">
+                  <p className="font-harmond _heading" ref={textRef}>
+                    Subscribe to Our Newsletter
+                  </p>
+                </div>
                 <p className="text-white font-inter">
                   And never miss latest Updates!
                 </p>
@@ -50,3 +122,7 @@ function Newsletter() {
 }
 
 export default Newsletter;
+
+
+
+

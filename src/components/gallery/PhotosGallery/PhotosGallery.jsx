@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import arrowLeft from "@/public/images/arrow-to-left.svg";
@@ -11,10 +11,12 @@ import img3 from "@/public/images/gallery-photo (3).png";
 import img4 from "@/public/images/gallery-photo (4).png";
 import "./photos-gallery.scss";
 
+// Ten-image set loops across slides to keep the grid balanced.
 const images = [img1, img2, img3, img4, img1, img2, img3, img4, img1, img2];
 const slidesCount = images.length;
 
 function PhotosGallery() {
+  // Track the active slide so controls and indicator stay in sync.
   const [active, setActive] = useState(0);
   const swiperRef = useRef(null);
 
@@ -114,3 +116,5 @@ function PhotosGallery() {
 }
 
 export default PhotosGallery;
+
+

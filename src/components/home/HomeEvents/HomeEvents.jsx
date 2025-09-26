@@ -7,6 +7,7 @@ import arrowLeft from "../../../../public/images/arrow-to-left.svg";
 import arrowRight from "../../../../public/images/arrow-to-right.svg";
 import { useRef } from "react";
 function HomeEvents() {
+  // Hook into the swiper instance so the custom arrows can control it.
   const swiperRef = useRef(null);
   return (
     <div className="home__events bg-dark-1 pt-md-0 pt-5">
@@ -17,7 +18,7 @@ function HomeEvents() {
               <p className="heading-xl mb-3">Events</p>
               <p className="text-gray p-m-0 p-4">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
+                industry. Lorem Ipsum has been the industry&apos;s standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
                 of type.
               </p>
@@ -54,4 +55,6 @@ function HomeEvents() {
 }
 
 export default HomeEvents;
+
+
 

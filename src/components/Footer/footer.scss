@@ -1,18 +1,25 @@
-.footer__main{
-    background-color: #0C0C0C;
-    padding: 50px 0;
-    .footer__col{
-        .text__logo{
-            color: #DCCA87;
-            font-size: 4rem;
-
-        }
-        .socail__links{
-            padding-top: 20px;
-            border-top: 1px solid #DCCA87 ;
-            a{
-                color: #fff;
-            }
-        }
+.footer__main {
+  background-color: #0c0c0c;
+  padding: 50px 0 0;
+  .footer__col {
+    .text__logo {
+      color: #dcca87;
+      font-size: 4rem;
     }
+    .socail__links {
+      padding-top: 20px;
+      border-top: 1px solid #dcca87;
+      a {
+        color: #fff;
+      }
+    }
+  }
+  ._developer {
+    padding: 10px 0;
+    background-color: #dcca87;
+    font-size: 1.5rem;
+    ._icon {
+      color: #0c0c0c;
+    }
+  }
 }

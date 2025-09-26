@@ -16,6 +16,10 @@
       font-size: 4rem;
       line-height: 1;
     }
+    .newsletter__heading-char {
+      display: inline-block;
+      transform-origin: bottom;
+    }
     ._form {
       width: 100%;
       .newsletter__input {

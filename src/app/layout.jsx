@@ -1,8 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
+﻿import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/main.scss";
 import Footer from "./../components/Footer/Footer";
+import InitialLoader from "./../components/shared/Loader/InitialLoader";
 
 const athinaRegular = localFont({
   src: "../../public/fonts/Athina-Regular.otf",
@@ -27,11 +28,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: undefined, // set to your site URL when known
   title: {
-    default: "Café Regina",
-    template: "%s | Café Regina",
+    default: "CafAc Regina",
+    template: "%s | CafAc Regina",
   },
   description:
-    "Authentic café in Zelzate. Drinks, small bites, weekend suggestions, photos and contact information.",
+    "Authentic cafAc in Zelzate. Drinks, small bites, weekend suggestions, photos and contact information.",
 };
 
 export default function RootLayout({ children }) {
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${HarmondSemiBold.className} ${geistSans.variable} ${geistMono.variable} ${athinaRegular.className} `}
       >
+        <InitialLoader />
         <main>{children}</main>
         <Footer />
       </body>

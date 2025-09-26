@@ -1,7 +1,6 @@
-import Newsletter from "./../../components/shared/newsletter/Newsletter";
-
 import PageHeader from "@/components/shared/PageHeader/PageHeader";
 import PhotosGallery from "@/components/gallery/PhotosGallery/PhotosGallery";
+import Newsletter from "@/components/shared/newsletter/Newsletter";
 
 function PhotosPage() {
   return (
@@ -22,3 +21,4 @@ function PhotosPage() {
 }
 
 export default PhotosPage;
+

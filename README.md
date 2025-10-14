@@ -8,7 +8,7 @@ Cafe Regina is a marketing site for a Belgian cafe built with Next.js to highlig
 - Shared components for navigation, page headers, loaders, and CTAs.
 - Newsletter module enhanced with GSAP animations and reusable form UI.
 
-## Tech Stack
+## Tech Stac
 - Next.js 15
 - React 19
 - SCSS modules and Bootstrap 5
